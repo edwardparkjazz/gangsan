@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="euc-kr">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<title>광산 AI 행정지원 시스템 ? 공무원용 시연 목업</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme: light only;
+  --ink:#1A2230;
+  --side:#111A28;        /* 사이드바 */
+  --side-hi:#1C2B40;
+  --paper:#EEF1F5;       /* 업무 영역 배경 */
+  --card:#FFFFFF;
+  --line:#D7DDE6;
+  --sub:#5B6779;
+  --ai:#0D8F7B;          /* AI 식별색 */
+  --ai-soft:#E4F5F1;
+  --ai-line:#9BD9CD;
+  --blue:#1261A8;
+  --amber:#B97A10;
+  --amber-soft:#FBF1DD;
+  --red:#B93131;
+  --red-soft:#FBE9E9;
+  --ok:#1B7A3D;
+  --ok-soft:#E7F5EC;
+  --gold:#C89B3C;
+  font-size:15px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Noto Sans KR','Malgun Gothic','Apple SD Gothic Neo',sans-serif;
+  background:var(--paper);color:var(--ink);line-height:1.55;
+}
+::selection{background:var(--ai);color:#fff}
+button{font-family:inherit}
+
+/* ---------- 데모 바 ---------- */
+.demo-bar{
+  background:#0B1420;color:#fff;display:flex;align-items:center;gap:12px;
+  padding:9px 18px;font-size:.8rem;
+}
+.demo-bar .tag{background:var(--gold);color:#0B1420;font-weight:700;padding:2px 10px;border-radius:20px;font-size:.73rem}
+.demo-bar .grow{flex:1}
+.demo-bar .net{display:inline-flex;align-items:center;gap:6px;color:#8CEBD9;font-weight:700}
+.demo-bar .net::before{content:'??'}
+
+/* ---------- 레이아웃 ---------- */
+.app{display:flex;min-height:calc(100vh - 38px)}
+aside{
+  width:232px;flex:none;background:var(--side);color:#C2CDDC;
+  display:flex;flex-direction:column;padding:18px 0;
+}
+.brand{padding:0 20px 16px;border-bottom:1px solid #22324A;margin-bottom:12px}
+.brand .sys{font-weight:900;font-size:1.02rem;color:#fff;letter-spacing:.01em}
+.brand .sys b{color:#7FE0CF}
+.brand .org{font-size:.72rem;color:#7E8EA5;margin-top:2px}
+.nav-label{font-size:.68rem;color:#64748B;letter-spacing:.14em;padding:12px 20px 6px;font-weight:700}
+nav.side button{
+  display:flex;align-items:center;gap:10px;width:100%;
+  background:none;border:none;color:#C2CDDC;text-align:left;
+  padding:10px 20px;font-size:.88rem;font-weight:500;cursor:pointer;
+  border-left:3px solid transparent;transition:background .15s;
+}
+nav.side button:hover{background:var(--side-hi)}
+nav.side button[aria-current="true"]{background:var(--side-hi);color:#fff;border-left-color:var(--ai);font-weight:700}
+nav.side button .ico{width:20px;text-align:center;flex:none}
+nav.side button .new{margin-left:auto;background:var(--ai);color:#fff;font-size:.6rem;font-weight:700;border-radius:10px;padding:1px 7px}
+.side-foot{margin-top:auto;padding:14px 20px;border-top:1px solid #22324A;font-size:.7rem;color:#64748B;line-height:1.7}
+.side-foot b{color:#9BB0C9}
+
+.main{flex:1;min-width:0;display:flex;flex-direction:column}
+.topbar{
+  background:var(--card);border-bottom:1px solid var(--line);
+  display:flex;align-items:center;gap:14px;padding:10px 22px;
+}
+.topbar h1{font-size:1rem;font-weight:900}
+.topbar .crumb{font-size:.78rem;color:var(--sub)}
+.topbar .grow{flex:1}
+.user{display:flex;align-items:center;gap:9px;font-size:.8rem}
+.user .avatar{width:30px;height:30px;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.8rem}
+.user .dept{color:var(--sub)}
+.content{padding:22px;max-width:1180px;width:100%;margin:0 auto}
+
+.view{display:none}
+.view.active{display:block;animation:fadeUp .3s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes blink{50%{opacity:0}}
+
+.ai-badge{
+  display:inline-flex;align-items:center;gap:5px;background:var(--ai);color:#fff;
+  font-size:.66rem;font-weight:700;padding:2px 9px;border-radius:20px;letter-spacing:.03em;vertical-align:middle;
+}
+.ai-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:#B7F0E4}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:12px}
+.panel-h{display:flex;align-items:center;gap:10px;padding:13px 18px;border-bottom:1px solid var(--line)}
+.panel-h h3{font-size:.95rem;font-weight:900}
+.panel-h .sub{font-size:.76rem;color:var(--sub)}
+.panel-b{padding:18px}
+.pill{font-size:.7rem;font-weight:700;border-radius:6px;padding:2px 8px}
+.pill.warn{background:var(--amber-soft);color:var(--amber)}
+.pill.risk{background:var(--red-soft);color:var(--red)}
+.pill.ok{background:var(--ok-soft);color:var(--ok)}
+.pill.info{background:#E7EFFA;color:#1D5FA8}
+.pill.ai{background:var(--ai-soft);color:#0A6E5F}
+.btn{
+  background:var(--ai);color:#fff;border:none;border-radius:9px;
+  font-weight:700;font-size:.85rem;padding:10px 18px;cursor:pointer;
+}
+.btn:hover{background:#0B7A69}
+.btn.ghost{background:#fff;color:var(--ink);border:1px solid var(--line)}
+.btn.ghost:hover{border-color:var(--ai);color:var(--ai)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn:focus-visible{outline:3px solid var(--ai-line)}
+
+/* ---------- 홈 대시보드 ---------- */
+.stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+@media(max-width:860px){.stat-row{grid-template-columns:1fr 1fr}}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.stat .k{font-size:.74rem;color:var(--sub);font-weight:700}
+.stat .v{font-size:1.5rem;font-weight:900;margin-top:2px}
+.stat .v small{font-size:.72rem;font-weight:700;color:var(--ai);margin-left:6px}
+.stat.hot .v{color:var(--red)}
+.q-item{
+  display:flex;align-items:center;gap:12px;padding:12px 4px;border-bottom:1px dashed var(--line);font-size:.86rem;
+}
+.q-item:last-child{border-bottom:none}
+.q-item .t{flex:1;min-width:0}
+.q-item .t b{display:block}
+.q-item .t span{font-size:.75rem;color:var(--sub)}
+.q-item .go{flex:none;color:var(--ai);font-weight:700;font-size:.78rem;background:none;border:none;cursor:pointer}
+.two-col{display:grid;grid-template-columns:1.25fr 1fr;gap:16px}
+@media(max-width:920px){.two-col{grid-template-columns:1fr}}
+.notice li{font-size:.83rem;padding:9px 2px;border-bottom:1px dashed var(--line);list-style:none;color:var(--ink)}
+.notice li:last-child{border-bottom:none}
+.notice li b{color:var(--blue)}
+
+/* ---------- 규정·지침 질의 ---------- */
+.ask-row{display:flex;gap:10px}
+.ask-row input{
+  flex:1;border:1px solid var(--line);border-radius:9px;padding:11px 14px;
+  font-family:inherit;font-size:.9rem;color:var(--ink);background:#FBFCFE;min-width:0;
+}
+.ask-row input:focus{outline:2px solid var(--ai);border-color:var(--ai)}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.chips button{
+  border:1px solid var(--line);background:#fff;border-radius:20px;
+  font-size:.78rem;color:var(--sub);padding:6px 13px;cursor:pointer;
+}
+.chips button:hover{border-color:var(--ai);color:var(--ai)}
+.qa-out{display:none;margin-top:16px;border-top:1px solid var(--line);padding-top:16px}
+.qa-out.show{display:block;animation:fadeUp .3s ease}
+.qa-out .q{font-weight:700;font-size:.88rem;color:var(--blue);margin-bottom:8px}
+.qa-out .a{font-size:.9rem;white-space:pre-wrap;color:var(--ink)}
+.qa-out .a .cursor{display:inline-block;width:8px;height:1.05em;background:var(--ai);vertical-align:text-bottom;animation:blink .8s steps(1) infinite;margin-left:2px}
+.src-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.src{
+  background:var(--ai-soft);border:1px solid var(--ai-line);color:#0A6E5F;
+  border-radius:8px;font-size:.73rem;font-weight:700;padding:6px 10px;cursor:pointer;
+}
+.src::before{content:'?? '}
+.guard{margin-top:12px;font-size:.73rem;color:var(--sub)}
+.guard b{color:#0A6E5F}
+
+/* ---------- 민원 답변 지원 ---------- */
+.minwon-grid{display:grid;grid-template-columns:1fr 1.25fr;gap:16px}
+@media(max-width:960px){.minwon-grid{grid-template-columns:1fr}}
+.raw{background:#FBFCFE;border:1px solid var(--line);border-radius:10px;padding:14px;font-size:.86rem;white-space:pre-wrap;color:var(--ink)}
+.raw .mask{background:#FFE9A8;border-radius:4px;padding:0 3px;font-weight:700}
+.meta-line{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 0}
+.step{display:none}
+.step.show{display:block;animation:fadeUp .35s ease}
+.blockline{border:1px solid var(--line);border-radius:10px;padding:13px 15px;margin-bottom:10px;font-size:.85rem;background:#fff}
+.blockline h5{font-size:.76rem;color:#0A6E5F;margin-bottom:6px;display:flex;gap:8px;align-items:center}
+.blockline.soft{background:var(--ai-soft);border-color:var(--ai-line)}
+.checklist{display:grid;gap:7px;margin-top:4px}
+.checklist label{display:flex;gap:8px;align-items:flex-start;font-size:.8rem;color:var(--ink);cursor:pointer}
+.checklist input{margin-top:3px;accent-color:var(--ai)}
+.spin{display:none;color:var(--ai);font-weight:700;font-size:.85rem;padding:30px 0;text-align:center}
+.spin.show{display:block}
+
+/* ---------- 문서 초안 ---------- */
+.doc-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:16px}
+@media(max-width:960px){.doc-grid{grid-template-columns:1fr}}
+.doc-grid textarea{
+  width:100%;height:170px;border:1px solid var(--line);border-radius:10px;
+  font-family:inherit;font-size:.85rem;padding:12px;resize:vertical;color:var(--ink);background:#FBFCFE;
+}
+.doc-grid textarea:focus{outline:2px solid var(--ai);border-color:var(--ai)}
+.seg{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap}
+.seg button{
+  border:1px solid var(--line);background:#fff;border-radius:8px;font-size:.78rem;
+  font-weight:700;color:var(--sub);padding:7px 13px;cursor:pointer;
+}
+.seg button[aria-pressed="true"]{background:var(--ai);border-color:var(--ai);color:#fff}
+.gong{
+  border:1px solid var(--line);border-radius:10px;background:#fff;padding:22px 24px;
+  font-size:.84rem;min-height:330px;color:var(--ink);
+}
+.gong .ph{color:#9AA9BE;text-align:center;padding-top:110px;font-size:.85rem}
+.gong .head{display:flex;justify-content:space-between;border-bottom:2px solid var(--ink);padding-bottom:8px;margin-bottom:12px}
+.gong .head .org{font-weight:900;font-size:1.05rem}
+.gong .head .no{font-size:.75rem;color:var(--sub);text-align:right}
+.gong .row{display:flex;gap:10px;margin-bottom:4px}
+.gong .row .k{flex:none;width:52px;font-weight:700}
+.gong .subject{font-weight:900;margin:10px 0}
+.gong ol{padding-left:20px;display:grid;gap:7px}
+.gong .end{margin-top:14px;font-weight:700}
+.gong .sign{margin-top:18px;text-align:center;font-weight:900;letter-spacing:.3em;font-size:1rem}
+.gong mark{background:var(--ai-soft);color:#0A6E5F;border-radius:3px;padding:0 2px}
+
+/* ---------- 공람 의견 요약 ---------- */
+.sum-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:960px){.sum-grid{grid-template-columns:1fr}}
+.bar-row{display:grid;gap:9px;margin-top:6px}
+.bar-item{font-size:.8rem}
+.bar-item .lab{display:flex;justify-content:space-between;margin-bottom:3px}
+.bar-item .lab b{font-weight:700}
+.bar{height:9px;border-radius:5px;background:#E8EDF3;overflow:hidden}
+.bar i{display:block;height:100%;border-radius:5px;background:var(--ai);width:0;transition:width .9s ease}
+.op-item{border-bottom:1px dashed var(--line);padding:9px 2px;font-size:.82rem}
+.op-item:last-child{border-bottom:none}
+.op-item b{color:var(--blue)}
+
+.footer-note{font-size:.72rem;color:#8A96A8;text-align:center;padding:18px 20px 26px;line-height:1.8}
+.footer-note b{color:var(--sub)}
+
+@media(max-width:760px){
+  .app{flex-direction:column}
+  aside{width:100%;flex-direction:row;flex-wrap:wrap;padding:8px}
+  .brand{border:none;padding:8px 12px;margin:0}
+  .nav-label{display:none}
+  nav.side{display:flex;flex-wrap:wrap}
+  nav.side button{width:auto;border-left:none;border-bottom:3px solid transparent;padding:8px 12px}
+  nav.side button[aria-current="true"]{border-left:none;border-bottom-color:var(--ai)}
+  .side-foot{display:none}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+
+<div class="demo-bar">
+  <span class="tag">시연용 목업</span>
+  <span>광산구청 공무원용 AI 행정지원 시스템 제안 · 데이터는 가상 예시입니다</span>
+  <span class="grow"></span>
+  <span class="net">행정 내부망 · 온프레미스 구동</span>
+</div>
+
+<div class="app">
+  <!-- 사이드바 -->
+  <aside>
+    <div class="brand">
+      <div class="sys">광산 <b>AI</b> 행정지원</div>
+      <div class="org">광주광역시 광산구 · 직원 전용</div>
+    </div>
+    <div class="nav-label">업무</div>
+    <nav class="side" id="sideNav">
+      <button data-view="v-home" aria-current="true"><span class="ico">▦</span>오늘의 업무</button>
+      <button data-view="v-qa"><span class="ico">¶</span>규정·지침 질의<span class="new">AI</span></button>
+      <button data-view="v-minwon"><span class="ico">?</span>민원 답변 지원<span class="new">AI</span></button>
+      <button data-view="v-doc"><span class="ico">?</span>공문서 초안<span class="new">AI</span></button>
+      <button data-view="v-sum"><span class="ico">≡</span>공람 의견 분석<span class="new">AI</span></button>
+    </nav>
+    <div class="side-foot">
+      <b>보안</b><br>
+      폐쇄망 온프레미스 LLM<br>
+      개인정보 자동 마스킹<br>
+      전 질의·답변 감사 로그
+    </div>
+  </aside>
+
+  <!-- 메인 -->
+  <div class="main">
+    <div class="topbar">
+      <h1 id="viewTitle">오늘의 업무</h1>
+      <span class="crumb" id="viewCrumb">홈 · 2026.10.01(목)</span>
+      <span class="grow"></span>
+      <div class="user">
+        <div class="avatar">김</div>
+        <div><b>김주무관</b><div class="dept">민원봉사과</div></div>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <!-- ============ 홈 대시보드 ============ -->
+      <section class="view active" id="v-home">
+        <div class="stat-row">
+          <div class="stat"><div class="k">오늘 접수 민원</div><div class="v">24건 <small>AI 분류 완료</small></div></div>
+          <div class="stat"><div class="k">AI 답변 초안 생성</div><div class="v">18건 <small>검수 대기 6</small></div></div>
+          <div class="stat"><div class="k">다국어 민원 자동 번역</div><div class="v">3건 <small>러시아어 2 · 베트남어 1</small></div></div>
+          <div class="stat hot"><div class="k">처리기한 임박</div><div class="v">3건</div></div>
+        </div>
+        <div class="two-col">
+          <div class="panel">
+            <div class="panel-h"><h3>검수 대기 업무</h3><span class="ai-badge">AI 초안 완료</span><span class="sub">담당자 확인 후 처리됩니다</span></div>
+            <div class="panel-b">
+              <div class="q-item">
+                <span class="pill info">민원</span>
+                <div class="t"><b>신가동 가로등 고장 + CCTV 설치 요청</b><span>복합 민원 ? 2건 분리 접수 권장 · 답변 초안 생성됨</span></div>
+                <button class="go" data-jump="v-minwon">검수 ?</button>
+              </div>
+              <div class="q-item">
+                <span class="pill warn">다국어</span>
+                <div class="t"><b>Вопрос о вывозе мусора (월곡동)</b><span>러시아어 민원 ? 번역·답변 초안·역번역 완료</span></div>
+                <button class="go" data-jump="v-minwon">검수 ?</button>
+              </div>
+              <div class="q-item">
+                <span class="pill ai">분석</span>
+                <div class="t"><b>미래차 국가산단 공람 의견서 42건</b><span>쟁점별 분류·요약 완료 ? 결과 보고 초안 연계 가능</span></div>
+                <button class="go" data-jump="v-sum">보기 ?</button>
+              </div>
+              <div class="q-item">
+                <span class="pill risk">기한 D-2</span>
+                <div class="t"><b>정보공개청구 2026-184호 답변</b><span>관련 규정·유사 결정례 요약 준비됨</span></div>
+                <button class="go" data-jump="v-qa">규정 확인 ?</button>
+              </div>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panel-h"><h3>AI 브리핑</h3><span class="sub">오늘 아침 자동 생성</span></div>
+            <div class="panel-b">
+              <ul class="notice">
+                <li><b>공람 마감 D-11</b> ? 국가산단 환경영향평가 의견 접수가 10.12 마감됩니다. 주간 의견 유입이 늘고 있어 중간 보고를 권장합니다.</li>
+                <li><b>민원 추이</b> ? 이번 주 가로등·보안등 민원이 평시 대비 40% 증가(일몰 시간 변화 영향 추정). 일괄 점검 공지 검토.</li>
+                <li><b>지침 개정</b> ? 지방보조금 정산 관련 내부 지침이 9.22 개정되어 질의응답 지식에 반영되었습니다.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 규정·지침 질의 ============ -->
+      <section class="view" id="v-qa">
+        <div class="panel">
+          <div class="panel-h"><h3>규정·지침 AI 질의</h3><span class="ai-badge">출처 인용</span><span class="sub">법령 · 조례 · 내부 업무편람 · 처리 선례를 한 번에 검색합니다</span></div>
+          <div class="panel-b">
+            <div class="ask-row">
+              <input id="qaInput" type="text" placeholder="예) 옥외광고물 허가 처리기한과 구비서류는?" aria-label="규정 질의 입력">
+              <button class="btn" id="qaBtn">질의</button>
+            </div>
+            <div class="chips" id="qaChips">
+              <button data-q="ad">옥외광고물 허가 처리기한·구비서류</button>
+              <button data-q="subsidy">지방보조금 정산보고 제출 기한</button>
+              <button data-q="info">정보공개청구 부분공개 결정 요건</button>
+            </div>
+            <div class="qa-out" id="qaOut" aria-live="polite">
+              <div class="q" id="qaQ"></div>
+              <div class="a" id="qaA"></div>
+              <div class="src-row" id="qaSrc"></div>
+              <div class="guard"><b>환각 차단</b> ? 모든 문장은 좌측 근거 문서에서만 생성되며, 근거가 없으면 "확인 불가"로 답하고 담당 부서를 안내합니다. 질의·답변은 감사 로그에 기록됩니다. (시연용 가상 데이터)</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 민원 답변 지원 ============ -->
+      <section class="view" id="v-minwon">
+        <div class="minwon-grid">
+          <div class="panel">
+            <div class="panel-h"><h3>접수 민원 원문</h3><span class="pill warn">러시아어</span><span class="sub">광산365 접수 2026-10-01 09:12</span></div>
+            <div class="panel-b">
+              <div class="raw">Здравствуйте! Меня зовут <span class="mask">А***й</span>, я живу в Вольгок-доне. Подскажите, пожалуйста, как выбросить старый диван и холодильник? Сколько это стоит и куда обращаться? Мой номер: <span class="mask">010-****-1234</span>. Спасибо!</div>
+              <div class="meta-line">
+                <span class="pill ai">개인정보 자동 마스킹</span>
+                <span class="pill info">언어 감지: 러시아어</span>
+              </div>
+              <div style="margin-top:14px">
+                <button class="btn" id="mwBtn">AI 분석·답변 초안 생성</button>
+              </div>
+              <div class="spin" id="mwSpin">? 번역 · 소관 분류 · 유사사례 대조 · 답변 초안 생성 중…</div>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panel-h"><h3>AI 처리 결과</h3><span class="ai-badge">검수 후 발송</span></div>
+            <div class="panel-b">
+              <div class="step" id="mwStep">
+                <div class="blockline">
+                  <h5><span class="ai-badge">한국어 번역</span></h5>
+                  안녕하세요! 저는 월곡동에 사는 <b>А***й</b>입니다. 오래된 소파와 냉장고를 어떻게 버려야 하는지 알려주세요. 비용은 얼마이고 어디에 문의해야 하나요? 감사합니다!
+                </div>
+                <div class="blockline">
+                  <h5><span class="ai-badge">분류·선례</span></h5>
+                  소관: <b>청소행정 담당</b> (대형폐기물) · 유사 처리사례 12건 · 평균 처리 1일 · <b>폐가전(냉장고)은 무상 방문수거 대상</b> ? 수수료 안내에서 제외해야 합니다.
+                </div>
+                <div class="blockline soft">
+                  <h5><span class="ai-badge">답변 초안 (한국어)</span> 담당자 수정 가능</h5>
+                  안녕하세요, 광산구청 청소행정 담당입니다. ① 소파는 대형폐기물 신고 대상으로, 광산365 또는 행정복지센터에서 신고 후 스티커를 부착해 배출하시면 됩니다(수수료는 품목·크기별 상이). ② 냉장고 등 폐가전은 <b>무상 방문수거 서비스</b> 대상이므로 수수료 없이 전화 예약으로 수거됩니다. 자세한 절차를 함께 안내드립니다…
+                </div>
+                <div class="blockline">
+                  <h5><span class="ai-badge">러시아어 역번역 미리보기</span></h5>
+                  Здравствуйте! ① Диван: подайте заявку через ≪Квансан365≫… ② Холодильник: <b>бесплатный выездной вывоз</b> бытовой техники, без оплаты…
+                </div>
+                <div class="blockline">
+                  <h5>발송 전 검수 체크리스트</h5>
+                  <div class="checklist">
+                    <label><input type="checkbox" checked> 소관 분류가 적절한가 (청소행정)</label>
+                    <label><input type="checkbox" checked> 수수료 안내가 정확한가 (폐가전 무상수거 반영)</label>
+                    <label><input type="checkbox"> 역번역 내용이 한국어 답변과 일치하는가</label>
+                  </div>
+                </div>
+                <div style="display:flex;gap:8px;flex-wrap:wrap">
+                  <button class="btn">검수 완료 · 광산365 발송</button>
+                  <button class="btn ghost">초안 수정</button>
+                </div>
+              </div>
+              <div id="mwPh" style="color:#9AA9BE;font-size:.85rem;text-align:center;padding:90px 10px">좌측에서 [AI 분석·답변 초안 생성]을 누르면<br>번역 → 분류 → 초안 → 역번역 결과가 표시됩니다.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 공문서 초안 ============ -->
+      <section class="view" id="v-doc">
+        <div class="doc-grid">
+          <div class="panel">
+            <div class="panel-h"><h3>작성 개요 입력</h3><span class="sub">문서 유형을 고르고 핵심 내용만 적으세요</span></div>
+            <div class="panel-b">
+              <div class="seg" id="docSeg">
+                <button aria-pressed="true">내부 보고서</button>
+                <button aria-pressed="false">대외 공문</button>
+                <button aria-pressed="false">보도자료</button>
+              </div>
+              <textarea id="docInput" aria-label="개요 입력">미래차 국가산단 전략환경영향평가 공람 의견 수렴 중간결과 보고.
+- 접수 의견 42건 (9.21~9.30)
+- 소음·진동 18건, 교통 11건, 생활환경 9건, 기타 4건
+- 소음 저감 대책 보완 요구가 다수
+- 공람 마감 10.12, 최종 결과는 마감 후 1주 내 보고 예정</textarea>
+              <div style="margin-top:12px"><button class="btn" id="docBtn">AI 초안 생성</button></div>
+              <div class="spin" id="docSpin">? 행정 문서 서식 적용 · 초안 생성 중…</div>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panel-h"><h3>생성 결과</h3><span class="ai-badge">행정 서식 자동 준수</span></div>
+            <div class="panel-b">
+              <div class="gong" id="gongBox">
+                <div class="ph" id="gongPh">좌측 개요를 입력하고 [AI 초안 생성]을 누르면<br>결재 서식에 맞춘 초안이 생성됩니다.</div>
+                <div id="gongDoc" style="display:none">
+                  <div class="head">
+                    <div class="org">광산구</div>
+                    <div class="no">문서번호: 환경 2026-<mark>자동부여</mark><br>시행일자: 2026. 10. 1.</div>
+                  </div>
+                  <div class="row"><span class="k">수신</span><span>내부결재</span></div>
+                  <div class="subject">제목: 미래차 국가산단 전략환경영향평가 공람 의견 수렴 중간결과 보고</div>
+                  <ol>
+                    <li>광주 미래차 국가산단 조성사업 전략환경영향평가(초안) 주민 공람(2026. 9. 21.~10. 12.)과 관련하여 의견 수렴 중간결과를 다음과 같이 보고합니다.</li>
+                    <li>접수 현황: 총 <b>42건</b> (9. 21.~9. 30. 기준) ? 소음·진동 18건(42.9%), 교통 11건(26.2%), 생활환경 9건(21.4%), 기타 4건(9.5%)</li>
+                    <li>주요 쟁점: 공사 및 운영 단계의 <b>소음 저감 대책 보완 요구</b>가 다수이며, 통학로 주변 공사 차량 동선 조정 요구가 뒤를 잇고 있습니다.</li>
+                    <li>향후 계획: 공람 마감(10. 12.) 후 1주 이내 쟁점별 검토 의견을 포함한 최종 결과를 보고하겠습니다. 끝.</li>
+                  </ol>
+                  <div class="sign">광 산 구 청 장</div>
+                </div>
+              </div>
+              <div class="meta-line" id="gongMeta" style="display:none">
+                <span class="pill ai">공람 분석 결과 자동 인용</span>
+                <span class="pill ok">서식 점검 통과</span>
+                <span class="pill info">담당자 수정 후 결재 상신</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 공람 의견 분석 ============ -->
+      <section class="view" id="v-sum">
+        <div class="sum-grid">
+          <div class="panel">
+            <div class="panel-h"><h3>공람 의견서 42건 ? 쟁점 분류</h3><span class="ai-badge">자동 분류</span><span class="sub">미래차 국가산단 환경영향평가</span></div>
+            <div class="panel-b">
+              <div class="bar-row">
+                <div class="bar-item"><div class="lab"><b>소음·진동</b><span>18건 · 42.9%</span></div><div class="bar"><i data-w="86"></i></div></div>
+                <div class="bar-item"><div class="lab"><b>교통·공사차량</b><span>11건 · 26.2%</span></div><div class="bar"><i data-w="52"></i></div></div>
+                <div class="bar-item"><div class="lab"><b>생활환경(먼지·배수)</b><span>9건 · 21.4%</span></div><div class="bar"><i data-w="43"></i></div></div>
+                <div class="bar-item"><div class="lab"><b>기타</b><span>4건 · 9.5%</span></div><div class="bar"><i data-w="19"></i></div></div>
+              </div>
+              <div class="guard" style="margin-top:14px"><b>자동 집계</b> ? 접수되는 의견서를 실시간 분류·집계하며, 담당자는 원문 대조로 확인만 하면 됩니다.</div>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panel-h"><h3>쟁점별 대표 의견 요약</h3><span class="ai-badge">원문 링크</span></div>
+            <div class="panel-b">
+              <div class="op-item"><b>[소음·진동]</b> 야간 공사 제한 시간 명시와 방음벽 선(先)설치 요구 ? 유사 취지 12건 통합 (의견 #3, #7 외)</div>
+              <div class="op-item"><b>[교통]</b> 통학 시간대 공사 차량 우회 동선 지정 요구 ? 초등학교 인근 주민 중심 (의견 #11 외)</div>
+              <div class="op-item"><b>[생활환경]</b> 비산먼지 측정값 공개 주기 단축 요구 (의견 #19 외)</div>
+              <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap">
+                <button class="btn" data-jump2="v-doc">이 결과로 보고서 초안 만들기</button>
+                <button class="btn ghost">전체 의견 원문 보기</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <div class="footer-note">
+      <b>광산 AI 행정지원 시스템 ? 공무원용 제안 시연 목업</b> · 화면의 민원·공문·규정 내용은 기능 시연을 위한 가상 데이터이며, 실제 법령·지침 적용 시 원문 확인이 필요합니다.<br>
+      제안: ㈜투디지트 (2Digit) ? 온프레미스 소버린 AI · AgenticRAG 출처 인용 · OWASP/KISA 기준 보안 점검
+    </div>
+  </div>
+</div>
+
+<script>
+/* ---------- 뷰 전환 ---------- */
+const titles={ 'v-home':['오늘의 업무','홈 · 2026.10.01(목)'], 'v-qa':['규정·지침 질의','AI 업무지원'], 'v-minwon':['민원 답변 지원','AI 업무지원 · 광산365 연계'], 'v-doc':['공문서 초안','AI 업무지원'], 'v-sum':['공람 의견 분석','AI 업무지원'] };
+function showView(id){
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('#sideNav button').forEach(b=>b.setAttribute('aria-current', b.dataset.view===id));
+  document.getElementById('viewTitle').textContent=titles[id][0];
+  document.getElementById('viewCrumb').textContent=titles[id][1];
+  if(id==='v-sum') setTimeout(()=>{document.querySelectorAll('.bar i').forEach(b=>b.style.width=b.dataset.w+'%')},150);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+document.getElementById('sideNav').addEventListener('click',e=>{
+  const b=e.target.closest('button');if(b)showView(b.dataset.view);
+});
+document.querySelectorAll('[data-jump]').forEach(b=>b.addEventListener('click',()=>showView(b.dataset.jump)));
+document.querySelectorAll('[data-jump2]').forEach(b=>b.addEventListener('click',()=>showView(b.dataset.jump2)));
+
+/* ---------- 규정 질의 ---------- */
+const QA={
+  ad:{
+    q:'옥외광고물 허가 처리기한과 구비서류는?',
+    a:'옥외광고물 표시·설치 허가의 처리기한과 구비서류는 다음과 같습니다.\n\n? 처리기한: 접수일부터 통상 7일 이내 (현장 확인이 필요한 경우 연장 가능 ? 연장 시 신청인 통지 필요)\n? 구비서류: ① 허가 신청서 ② 광고물 모양·크기·재료 명세서 ③ 설치 위치 도면·사진 ④ 건물 소유자 사용 승낙서(임차 건물인 경우)\n? 유의: 어린이보호구역 등 표시 제한 지역 해당 여부를 먼저 확인해야 하며, 관내 제한 구역 목록은 내부 업무편람 별표에 정리되어 있습니다.\n\n유사 처리 선례 9건이 확인됩니다 ? 최근 반려 사유는 대부분 사용 승낙서 누락이었습니다.',
+    src:['옥외광고물법 시행령 (해당 조항)','광산구 옥외광고물 조례','내부 업무편람 ? 광고물 허가 §3','처리 선례 9건']
+  },
+  subsidy:{
+    q:'지방보조금 정산보고 제출 기한은?',
+    a:'지방보조사업 정산보고 기한은 다음과 같습니다.\n\n? 보조사업자는 사업 완료 후(또는 회계연도 종료 후) 정해진 기한 내 정산보고서를 제출해야 하며, 관내 운영 기준상 통상 2개월 이내입니다.\n? 제출 서류: 정산보고서, 집행 내역 증빙(계좌이체 확인 포함), 잔액 반납 증빙\n? 2026.9.22 개정 내부 지침: 집행잔액 반납 계좌 확인 절차가 추가되었습니다 ? 개정 전 안내문을 사용하지 않도록 주의하세요.\n\n기한 경과 시 다음 연도 보조사업 신청 제한 사유가 될 수 있으므로, 미제출 사업자에게는 기한 7일 전 사전 안내를 권장합니다.',
+    src:['지방보조금법 (해당 조항)','광산구 지방보조금 관리 조례','내부 지침 개정(2026.9.22)']
+  },
+  info:{
+    q:'정보공개청구 부분공개 결정 요건은?',
+    a:'부분공개 결정은 다음 요건을 충족할 때 가능합니다.\n\n? 공개 청구 대상 정보에 비공개 사유에 해당하는 부분과 공개 가능한 부분이 혼재되어 있고, 두 부분을 분리할 수 있는 경우 ? 비공개 부분을 제외하고 공개합니다.\n? 결정 통지에는 비공개 부분의 근거 조항과 사유를 구체적으로 명시해야 하며, 불복 절차(이의신청·행정심판) 안내를 포함해야 합니다.\n? 처리기한: 청구일부터 10일 이내 결정 (10일 연장 가능, 연장 시 통지)\n\n진행 중인 2026-184호 건은 개인정보 혼재 유형으로, 유사 결정례 3건의 마스킹 처리 방식을 참고할 수 있습니다.',
+    src:['정보공개법 (해당 조항)','부분공개 결정례 3건','표준 결정통지 서식']
+  }
+};
+const qaOut=document.getElementById('qaOut'),qaQ=document.getElementById('qaQ'),
+      qaA=document.getElementById('qaA'),qaSrc=document.getElementById('qaSrc'),
+      qaInput=document.getElementById('qaInput');
+let qaTimer=null;
+function runQA(key){
+  const d=QA[key]||QA.ad;
+  qaOut.classList.add('show');
+  qaQ.textContent='Q. '+d.q;
+  qaSrc.innerHTML='';
+  qaA.innerHTML='<span class="cursor"></span>';
+  clearInterval(qaTimer);
+  let i=0;
+  qaTimer=setInterval(()=>{
+    i+=3;
+    qaA.innerHTML=esc(d.a.slice(0,i))+'<span class="cursor"></span>';
+    if(i>=d.a.length){
+      clearInterval(qaTimer);
+      qaA.textContent=d.a;
+      d.src.forEach(s=>{const el=document.createElement('span');el.className='src';el.textContent=s;qaSrc.appendChild(el)});
+    }
+  },12);
+}
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+document.getElementById('qaChips').addEventListener('click',e=>{
+  const b=e.target.closest('button');if(!b)return;
+  qaInput.value=QA[b.dataset.q].q;runQA(b.dataset.q);
+});
+document.getElementById('qaBtn').addEventListener('click',()=>{
+  const v=qaInput.value;
+  if(/보조금|정산/.test(v))runQA('subsidy');
+  else if(/정보공개|부분공개/.test(v))runQA('info');
+  else runQA('ad');
+});
+qaInput.addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('qaBtn').click()});
+
+/* ---------- 민원 답변 지원 ---------- */
+document.getElementById('mwBtn').addEventListener('click',()=>{
+  const sp=document.getElementById('mwSpin'),st=document.getElementById('mwStep'),ph=document.getElementById('mwPh');
+  sp.classList.add('show');
+  document.getElementById('mwBtn').disabled=true;
+  setTimeout(()=>{
+    sp.classList.remove('show');
+    ph.style.display='none';
+    st.classList.add('show');
+  },1500);
+});
+
+/* ---------- 공문서 초안 ---------- */
+document.getElementById('docSeg').addEventListener('click',e=>{
+  const b=e.target.closest('button');if(!b)return;
+  document.querySelectorAll('#docSeg button').forEach(x=>x.setAttribute('aria-pressed','false'));
+  b.setAttribute('aria-pressed','true');
+});
+document.getElementById('docBtn').addEventListener('click',()=>{
+  const sp=document.getElementById('docSpin');
+  sp.classList.add('show');
+  setTimeout(()=>{
+    sp.classList.remove('show');
+    document.getElementById('gongPh').style.display='none';
+    document.getElementById('gongDoc').style.display='block';
+    document.getElementById('gongMeta').style.display='flex';
+  },1300);
+});
+</script>
+</body>
+</html>
