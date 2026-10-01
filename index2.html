@@ -4,20 +4,20 @@
 <meta charset="euc-kr">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light only">
-<title>±¤»ê AI ÇàÁ¤Áö¿ø ½Ã½ºÅÛ ? °ø¹«¿ø¿ë ½Ã¿¬ ¸ñ¾÷</title>
+<title>ê´‘ì‚° AI í–‰ì •ì§€ì› ì‹œìŠ¤í…œ ? ê³µë¬´ì›ìš© ì‹œì—° ëª©ì—…</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
 :root{
   color-scheme: light only;
   --ink:#1A2230;
-  --side:#111A28;        /* »çÀÌµå¹Ù */
+  --side:#111A28;        /* ì‚¬ì´ë“œë°” */
   --side-hi:#1C2B40;
-  --paper:#EEF1F5;       /* ¾÷¹« ¿µ¿ª ¹è°æ */
+  --paper:#EEF1F5;       /* ì—…ë¬´ ì˜ì—­ ë°°ê²½ */
   --card:#FFFFFF;
   --line:#D7DDE6;
   --sub:#5B6779;
-  --ai:#0D8F7B;          /* AI ½Äº°»ö */
+  --ai:#0D8F7B;          /* AI ì‹ë³„ìƒ‰ */
   --ai-soft:#E4F5F1;
   --ai-line:#9BD9CD;
   --blue:#1261A8;
@@ -38,7 +38,7 @@ body{
 ::selection{background:var(--ai);color:#fff}
 button{font-family:inherit}
 
-/* ---------- µ¥¸ð ¹Ù ---------- */
+/* ---------- ë°ëª¨ ë°” ---------- */
 .demo-bar{
   background:#0B1420;color:#fff;display:flex;align-items:center;gap:12px;
   padding:9px 18px;font-size:.8rem;
@@ -48,7 +48,7 @@ button{font-family:inherit}
 .demo-bar .net{display:inline-flex;align-items:center;gap:6px;color:#8CEBD9;font-weight:700}
 .demo-bar .net::before{content:'??'}
 
-/* ---------- ·¹ÀÌ¾Æ¿ô ---------- */
+/* ---------- ë ˆì´ì•„ì›ƒ ---------- */
 .app{display:flex;min-height:calc(100vh - 38px)}
 aside{
   width:232px;flex:none;background:var(--side);color:#C2CDDC;
@@ -116,7 +116,7 @@ nav.side button .new{margin-left:auto;background:var(--ai);color:#fff;font-size:
 .btn:disabled{opacity:.45;cursor:not-allowed}
 .btn:focus-visible{outline:3px solid var(--ai-line)}
 
-/* ---------- È¨ ´ë½Ãº¸µå ---------- */
+/* ---------- í™ˆ ëŒ€ì‹œë³´ë“œ ---------- */
 .stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
 @media(max-width:860px){.stat-row{grid-template-columns:1fr 1fr}}
 .stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
@@ -138,7 +138,7 @@ nav.side button .new{margin-left:auto;background:var(--ai);color:#fff;font-size:
 .notice li:last-child{border-bottom:none}
 .notice li b{color:var(--blue)}
 
-/* ---------- ±ÔÁ¤¡¤ÁöÄ§ ÁúÀÇ ---------- */
+/* ---------- ê·œì •Â·ì§€ì¹¨ ì§ˆì˜ ---------- */
 .ask-row{display:flex;gap:10px}
 .ask-row input{
   flex:1;border:1px solid var(--line);border-radius:9px;padding:11px 14px;
@@ -165,7 +165,7 @@ nav.side button .new{margin-left:auto;background:var(--ai);color:#fff;font-size:
 .guard{margin-top:12px;font-size:.73rem;color:var(--sub)}
 .guard b{color:#0A6E5F}
 
-/* ---------- ¹Î¿ø ´äº¯ Áö¿ø ---------- */
+/* ---------- ë¯¼ì› ë‹µë³€ ì§€ì› ---------- */
 .minwon-grid{display:grid;grid-template-columns:1fr 1.25fr;gap:16px}
 @media(max-width:960px){.minwon-grid{grid-template-columns:1fr}}
 .raw{background:#FBFCFE;border:1px solid var(--line);border-radius:10px;padding:14px;font-size:.86rem;white-space:pre-wrap;color:var(--ink)}
@@ -182,7 +182,7 @@ nav.side button .new{margin-left:auto;background:var(--ai);color:#fff;font-size:
 .spin{display:none;color:var(--ai);font-weight:700;font-size:.85rem;padding:30px 0;text-align:center}
 .spin.show{display:block}
 
-/* ---------- ¹®¼­ ÃÊ¾È ---------- */
+/* ---------- ë¬¸ì„œ ì´ˆì•ˆ ---------- */
 .doc-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:16px}
 @media(max-width:960px){.doc-grid{grid-template-columns:1fr}}
 .doc-grid textarea{
@@ -212,7 +212,7 @@ nav.side button .new{margin-left:auto;background:var(--ai);color:#fff;font-size:
 .gong .sign{margin-top:18px;text-align:center;font-weight:900;letter-spacing:.3em;font-size:1rem}
 .gong mark{background:var(--ai-soft);color:#0A6E5F;border-radius:3px;padding:0 2px}
 
-/* ---------- °ø¶÷ ÀÇ°ß ¿ä¾à ---------- */
+/* ---------- ê³µëžŒ ì˜ê²¬ ìš”ì•½ ---------- */
 .sum-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 @media(max-width:960px){.sum-grid{grid-template-columns:1fr}}
 .bar-row{display:grid;gap:9px;margin-top:6px}
@@ -246,251 +246,251 @@ nav.side button .new{margin-left:auto;background:var(--ai);color:#fff;font-size:
 <body>
 
 <div class="demo-bar">
-  <span class="tag">½Ã¿¬¿ë ¸ñ¾÷</span>
-  <span>±¤»ê±¸Ã» °ø¹«¿ø¿ë AI ÇàÁ¤Áö¿ø ½Ã½ºÅÛ Á¦¾È ¡¤ µ¥ÀÌÅÍ´Â °¡»ó ¿¹½ÃÀÔ´Ï´Ù</span>
+  <span class="tag">ì‹œì—°ìš© ëª©ì—…</span>
+  <span>ê´‘ì‚°êµ¬ì²­ ê³µë¬´ì›ìš© AI í–‰ì •ì§€ì› ì‹œìŠ¤í…œ ì œì•ˆ Â· ë°ì´í„°ëŠ” ê°€ìƒ ì˜ˆì‹œìž…ë‹ˆë‹¤</span>
   <span class="grow"></span>
-  <span class="net">ÇàÁ¤ ³»ºÎ¸Á ¡¤ ¿ÂÇÁ·¹¹Ì½º ±¸µ¿</span>
+  <span class="net">í–‰ì • ë‚´ë¶€ë§ Â· ì˜¨í”„ë ˆë¯¸ìŠ¤ êµ¬ë™</span>
 </div>
 
 <div class="app">
-  <!-- »çÀÌµå¹Ù -->
+  <!-- ì‚¬ì´ë“œë°” -->
   <aside>
     <div class="brand">
-      <div class="sys">±¤»ê <b>AI</b> ÇàÁ¤Áö¿ø</div>
-      <div class="org">±¤ÁÖ±¤¿ª½Ã ±¤»ê±¸ ¡¤ Á÷¿ø Àü¿ë</div>
+      <div class="sys">ê´‘ì‚° <b>AI</b> í–‰ì •ì§€ì›</div>
+      <div class="org">ê´‘ì£¼ê´‘ì—­ì‹œ ê´‘ì‚°êµ¬ Â· ì§ì› ì „ìš©</div>
     </div>
-    <div class="nav-label">¾÷¹«</div>
+    <div class="nav-label">ì—…ë¬´</div>
     <nav class="side" id="sideNav">
-      <button data-view="v-home" aria-current="true"><span class="ico">¢Ë</span>¿À´ÃÀÇ ¾÷¹«</button>
-      <button data-view="v-qa"><span class="ico">¢Ò</span>±ÔÁ¤¡¤ÁöÄ§ ÁúÀÇ<span class="new">AI</span></button>
-      <button data-view="v-minwon"><span class="ico">?</span>¹Î¿ø ´äº¯ Áö¿ø<span class="new">AI</span></button>
-      <button data-view="v-doc"><span class="ico">?</span>°ø¹®¼­ ÃÊ¾È<span class="new">AI</span></button>
-      <button data-view="v-sum"><span class="ico">¡Õ</span>°ø¶÷ ÀÇ°ß ºÐ¼®<span class="new">AI</span></button>
+      <button data-view="v-home" aria-current="true"><span class="ico">â–¦</span>ì˜¤ëŠ˜ì˜ ì—…ë¬´</button>
+      <button data-view="v-qa"><span class="ico">Â¶</span>ê·œì •Â·ì§€ì¹¨ ì§ˆì˜<span class="new">AI</span></button>
+      <button data-view="v-minwon"><span class="ico">?</span>ë¯¼ì› ë‹µë³€ ì§€ì›<span class="new">AI</span></button>
+      <button data-view="v-doc"><span class="ico">?</span>ê³µë¬¸ì„œ ì´ˆì•ˆ<span class="new">AI</span></button>
+      <button data-view="v-sum"><span class="ico">â‰¡</span>ê³µëžŒ ì˜ê²¬ ë¶„ì„<span class="new">AI</span></button>
     </nav>
     <div class="side-foot">
-      <b>º¸¾È</b><br>
-      Æó¼â¸Á ¿ÂÇÁ·¹¹Ì½º LLM<br>
-      °³ÀÎÁ¤º¸ ÀÚµ¿ ¸¶½ºÅ·<br>
-      Àü ÁúÀÇ¡¤´äº¯ °¨»ç ·Î±×
+      <b>ë³´ì•ˆ</b><br>
+      íì‡„ë§ ì˜¨í”„ë ˆë¯¸ìŠ¤ LLM<br>
+      ê°œì¸ì •ë³´ ìžë™ ë§ˆìŠ¤í‚¹<br>
+      ì „ ì§ˆì˜Â·ë‹µë³€ ê°ì‚¬ ë¡œê·¸
     </div>
   </aside>
 
-  <!-- ¸ÞÀÎ -->
+  <!-- ë©”ì¸ -->
   <div class="main">
     <div class="topbar">
-      <h1 id="viewTitle">¿À´ÃÀÇ ¾÷¹«</h1>
-      <span class="crumb" id="viewCrumb">È¨ ¡¤ 2026.10.01(¸ñ)</span>
+      <h1 id="viewTitle">ì˜¤ëŠ˜ì˜ ì—…ë¬´</h1>
+      <span class="crumb" id="viewCrumb">í™ˆ Â· 2026.10.01(ëª©)</span>
       <span class="grow"></span>
       <div class="user">
-        <div class="avatar">±è</div>
-        <div><b>±èÁÖ¹«°ü</b><div class="dept">¹Î¿øºÀ»ç°ú</div></div>
+        <div class="avatar">ê¹€</div>
+        <div><b>ê¹€ì£¼ë¬´ê´€</b><div class="dept">ë¯¼ì›ë´‰ì‚¬ê³¼</div></div>
       </div>
     </div>
 
     <div class="content">
 
-      <!-- ============ È¨ ´ë½Ãº¸µå ============ -->
+      <!-- ============ í™ˆ ëŒ€ì‹œë³´ë“œ ============ -->
       <section class="view active" id="v-home">
         <div class="stat-row">
-          <div class="stat"><div class="k">¿À´Ã Á¢¼ö ¹Î¿ø</div><div class="v">24°Ç <small>AI ºÐ·ù ¿Ï·á</small></div></div>
-          <div class="stat"><div class="k">AI ´äº¯ ÃÊ¾È »ý¼º</div><div class="v">18°Ç <small>°Ë¼ö ´ë±â 6</small></div></div>
-          <div class="stat"><div class="k">´Ù±¹¾î ¹Î¿ø ÀÚµ¿ ¹ø¿ª</div><div class="v">3°Ç <small>·¯½Ã¾Æ¾î 2 ¡¤ º£Æ®³²¾î 1</small></div></div>
-          <div class="stat hot"><div class="k">Ã³¸®±âÇÑ ÀÓ¹Ú</div><div class="v">3°Ç</div></div>
+          <div class="stat"><div class="k">ì˜¤ëŠ˜ ì ‘ìˆ˜ ë¯¼ì›</div><div class="v">24ê±´ <small>AI ë¶„ë¥˜ ì™„ë£Œ</small></div></div>
+          <div class="stat"><div class="k">AI ë‹µë³€ ì´ˆì•ˆ ìƒì„±</div><div class="v">18ê±´ <small>ê²€ìˆ˜ ëŒ€ê¸° 6</small></div></div>
+          <div class="stat"><div class="k">ë‹¤êµ­ì–´ ë¯¼ì› ìžë™ ë²ˆì—­</div><div class="v">3ê±´ <small>ëŸ¬ì‹œì•„ì–´ 2 Â· ë² íŠ¸ë‚¨ì–´ 1</small></div></div>
+          <div class="stat hot"><div class="k">ì²˜ë¦¬ê¸°í•œ ìž„ë°•</div><div class="v">3ê±´</div></div>
         </div>
         <div class="two-col">
           <div class="panel">
-            <div class="panel-h"><h3>°Ë¼ö ´ë±â ¾÷¹«</h3><span class="ai-badge">AI ÃÊ¾È ¿Ï·á</span><span class="sub">´ã´çÀÚ È®ÀÎ ÈÄ Ã³¸®µË´Ï´Ù</span></div>
+            <div class="panel-h"><h3>ê²€ìˆ˜ ëŒ€ê¸° ì—…ë¬´</h3><span class="ai-badge">AI ì´ˆì•ˆ ì™„ë£Œ</span><span class="sub">ë‹´ë‹¹ìž í™•ì¸ í›„ ì²˜ë¦¬ë©ë‹ˆë‹¤</span></div>
             <div class="panel-b">
               <div class="q-item">
-                <span class="pill info">¹Î¿ø</span>
-                <div class="t"><b>½Å°¡µ¿ °¡·Îµî °íÀå + CCTV ¼³Ä¡ ¿äÃ»</b><span>º¹ÇÕ ¹Î¿ø ? 2°Ç ºÐ¸® Á¢¼ö ±ÇÀå ¡¤ ´äº¯ ÃÊ¾È »ý¼ºµÊ</span></div>
-                <button class="go" data-jump="v-minwon">°Ë¼ö ?</button>
+                <span class="pill info">ë¯¼ì›</span>
+                <div class="t"><b>ì‹ ê°€ë™ ê°€ë¡œë“± ê³ ìž¥ + CCTV ì„¤ì¹˜ ìš”ì²­</b><span>ë³µí•© ë¯¼ì› ? 2ê±´ ë¶„ë¦¬ ì ‘ìˆ˜ ê¶Œìž¥ Â· ë‹µë³€ ì´ˆì•ˆ ìƒì„±ë¨</span></div>
+                <button class="go" data-jump="v-minwon">ê²€ìˆ˜ ?</button>
               </div>
               <div class="q-item">
-                <span class="pill warn">´Ù±¹¾î</span>
-                <div class="t"><b>¬£¬à¬á¬â¬à¬ã ¬à ¬Ó¬í¬Ó¬à¬Ù¬Ö ¬Þ¬å¬ã¬à¬â¬Ñ (¿ù°îµ¿)</b><span>·¯½Ã¾Æ¾î ¹Î¿ø ? ¹ø¿ª¡¤´äº¯ ÃÊ¾È¡¤¿ª¹ø¿ª ¿Ï·á</span></div>
-                <button class="go" data-jump="v-minwon">°Ë¼ö ?</button>
+                <span class="pill warn">ë‹¤êµ­ì–´</span>
+                <div class="t"><b>Ð’Ð¾Ð¿Ñ€Ð¾Ñ Ð¾ Ð²Ñ‹Ð²Ð¾Ð·Ðµ Ð¼ÑƒÑÐ¾Ñ€Ð° (ì›”ê³¡ë™)</b><span>ëŸ¬ì‹œì•„ì–´ ë¯¼ì› ? ë²ˆì—­Â·ë‹µë³€ ì´ˆì•ˆÂ·ì—­ë²ˆì—­ ì™„ë£Œ</span></div>
+                <button class="go" data-jump="v-minwon">ê²€ìˆ˜ ?</button>
               </div>
               <div class="q-item">
-                <span class="pill ai">ºÐ¼®</span>
-                <div class="t"><b>¹Ì·¡Â÷ ±¹°¡»ê´Ü °ø¶÷ ÀÇ°ß¼­ 42°Ç</b><span>ÀïÁ¡º° ºÐ·ù¡¤¿ä¾à ¿Ï·á ? °á°ú º¸°í ÃÊ¾È ¿¬°è °¡´É</span></div>
-                <button class="go" data-jump="v-sum">º¸±â ?</button>
+                <span class="pill ai">ë¶„ì„</span>
+                <div class="t"><b>ë¯¸ëž˜ì°¨ êµ­ê°€ì‚°ë‹¨ ê³µëžŒ ì˜ê²¬ì„œ 42ê±´</b><span>ìŸì ë³„ ë¶„ë¥˜Â·ìš”ì•½ ì™„ë£Œ ? ê²°ê³¼ ë³´ê³  ì´ˆì•ˆ ì—°ê³„ ê°€ëŠ¥</span></div>
+                <button class="go" data-jump="v-sum">ë³´ê¸° ?</button>
               </div>
               <div class="q-item">
-                <span class="pill risk">±âÇÑ D-2</span>
-                <div class="t"><b>Á¤º¸°ø°³Ã»±¸ 2026-184È£ ´äº¯</b><span>°ü·Ã ±ÔÁ¤¡¤À¯»ç °áÁ¤·Ê ¿ä¾à ÁØºñµÊ</span></div>
-                <button class="go" data-jump="v-qa">±ÔÁ¤ È®ÀÎ ?</button>
+                <span class="pill risk">ê¸°í•œ D-2</span>
+                <div class="t"><b>ì •ë³´ê³µê°œì²­êµ¬ 2026-184í˜¸ ë‹µë³€</b><span>ê´€ë ¨ ê·œì •Â·ìœ ì‚¬ ê²°ì •ë¡€ ìš”ì•½ ì¤€ë¹„ë¨</span></div>
+                <button class="go" data-jump="v-qa">ê·œì • í™•ì¸ ?</button>
               </div>
             </div>
           </div>
           <div class="panel">
-            <div class="panel-h"><h3>AI ºê¸®ÇÎ</h3><span class="sub">¿À´Ã ¾ÆÄ§ ÀÚµ¿ »ý¼º</span></div>
+            <div class="panel-h"><h3>AI ë¸Œë¦¬í•‘</h3><span class="sub">ì˜¤ëŠ˜ ì•„ì¹¨ ìžë™ ìƒì„±</span></div>
             <div class="panel-b">
               <ul class="notice">
-                <li><b>°ø¶÷ ¸¶°¨ D-11</b> ? ±¹°¡»ê´Ü È¯°æ¿µÇâÆò°¡ ÀÇ°ß Á¢¼ö°¡ 10.12 ¸¶°¨µË´Ï´Ù. ÁÖ°£ ÀÇ°ß À¯ÀÔÀÌ ´Ã°í ÀÖ¾î Áß°£ º¸°í¸¦ ±ÇÀåÇÕ´Ï´Ù.</li>
-                <li><b>¹Î¿ø ÃßÀÌ</b> ? ÀÌ¹ø ÁÖ °¡·Îµî¡¤º¸¾Èµî ¹Î¿øÀÌ Æò½Ã ´ëºñ 40% Áõ°¡(ÀÏ¸ô ½Ã°£ º¯È­ ¿µÇâ ÃßÁ¤). ÀÏ°ý Á¡°Ë °øÁö °ËÅä.</li>
-                <li><b>ÁöÄ§ °³Á¤</b> ? Áö¹æº¸Á¶±Ý Á¤»ê °ü·Ã ³»ºÎ ÁöÄ§ÀÌ 9.22 °³Á¤µÇ¾î ÁúÀÇÀÀ´ä Áö½Ä¿¡ ¹Ý¿µµÇ¾ú½À´Ï´Ù.</li>
+                <li><b>ê³µëžŒ ë§ˆê° D-11</b> ? êµ­ê°€ì‚°ë‹¨ í™˜ê²½ì˜í–¥í‰ê°€ ì˜ê²¬ ì ‘ìˆ˜ê°€ 10.12 ë§ˆê°ë©ë‹ˆë‹¤. ì£¼ê°„ ì˜ê²¬ ìœ ìž…ì´ ëŠ˜ê³  ìžˆì–´ ì¤‘ê°„ ë³´ê³ ë¥¼ ê¶Œìž¥í•©ë‹ˆë‹¤.</li>
+                <li><b>ë¯¼ì› ì¶”ì´</b> ? ì´ë²ˆ ì£¼ ê°€ë¡œë“±Â·ë³´ì•ˆë“± ë¯¼ì›ì´ í‰ì‹œ ëŒ€ë¹„ 40% ì¦ê°€(ì¼ëª° ì‹œê°„ ë³€í™” ì˜í–¥ ì¶”ì •). ì¼ê´„ ì ê²€ ê³µì§€ ê²€í† .</li>
+                <li><b>ì§€ì¹¨ ê°œì •</b> ? ì§€ë°©ë³´ì¡°ê¸ˆ ì •ì‚° ê´€ë ¨ ë‚´ë¶€ ì§€ì¹¨ì´ 9.22 ê°œì •ë˜ì–´ ì§ˆì˜ì‘ë‹µ ì§€ì‹ì— ë°˜ì˜ë˜ì—ˆìŠµë‹ˆë‹¤.</li>
               </ul>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- ============ ±ÔÁ¤¡¤ÁöÄ§ ÁúÀÇ ============ -->
+      <!-- ============ ê·œì •Â·ì§€ì¹¨ ì§ˆì˜ ============ -->
       <section class="view" id="v-qa">
         <div class="panel">
-          <div class="panel-h"><h3>±ÔÁ¤¡¤ÁöÄ§ AI ÁúÀÇ</h3><span class="ai-badge">ÃâÃ³ ÀÎ¿ë</span><span class="sub">¹ý·É ¡¤ Á¶·Ê ¡¤ ³»ºÎ ¾÷¹«Æí¶÷ ¡¤ Ã³¸® ¼±·Ê¸¦ ÇÑ ¹ø¿¡ °Ë»öÇÕ´Ï´Ù</span></div>
+          <div class="panel-h"><h3>ê·œì •Â·ì§€ì¹¨ AI ì§ˆì˜</h3><span class="ai-badge">ì¶œì²˜ ì¸ìš©</span><span class="sub">ë²•ë ¹ Â· ì¡°ë¡€ Â· ë‚´ë¶€ ì—…ë¬´íŽ¸ëžŒ Â· ì²˜ë¦¬ ì„ ë¡€ë¥¼ í•œ ë²ˆì— ê²€ìƒ‰í•©ë‹ˆë‹¤</span></div>
           <div class="panel-b">
             <div class="ask-row">
-              <input id="qaInput" type="text" placeholder="¿¹) ¿Á¿Ü±¤°í¹° Çã°¡ Ã³¸®±âÇÑ°ú ±¸ºñ¼­·ù´Â?" aria-label="±ÔÁ¤ ÁúÀÇ ÀÔ·Â">
-              <button class="btn" id="qaBtn">ÁúÀÇ</button>
+              <input id="qaInput" type="text" placeholder="ì˜ˆ) ì˜¥ì™¸ê´‘ê³ ë¬¼ í—ˆê°€ ì²˜ë¦¬ê¸°í•œê³¼ êµ¬ë¹„ì„œë¥˜ëŠ”?" aria-label="ê·œì • ì§ˆì˜ ìž…ë ¥">
+              <button class="btn" id="qaBtn">ì§ˆì˜</button>
             </div>
             <div class="chips" id="qaChips">
-              <button data-q="ad">¿Á¿Ü±¤°í¹° Çã°¡ Ã³¸®±âÇÑ¡¤±¸ºñ¼­·ù</button>
-              <button data-q="subsidy">Áö¹æº¸Á¶±Ý Á¤»êº¸°í Á¦Ãâ ±âÇÑ</button>
-              <button data-q="info">Á¤º¸°ø°³Ã»±¸ ºÎºÐ°ø°³ °áÁ¤ ¿ä°Ç</button>
+              <button data-q="ad">ì˜¥ì™¸ê´‘ê³ ë¬¼ í—ˆê°€ ì²˜ë¦¬ê¸°í•œÂ·êµ¬ë¹„ì„œë¥˜</button>
+              <button data-q="subsidy">ì§€ë°©ë³´ì¡°ê¸ˆ ì •ì‚°ë³´ê³  ì œì¶œ ê¸°í•œ</button>
+              <button data-q="info">ì •ë³´ê³µê°œì²­êµ¬ ë¶€ë¶„ê³µê°œ ê²°ì • ìš”ê±´</button>
             </div>
             <div class="qa-out" id="qaOut" aria-live="polite">
               <div class="q" id="qaQ"></div>
               <div class="a" id="qaA"></div>
               <div class="src-row" id="qaSrc"></div>
-              <div class="guard"><b>È¯°¢ Â÷´Ü</b> ? ¸ðµç ¹®ÀåÀº ÁÂÃø ±Ù°Å ¹®¼­¿¡¼­¸¸ »ý¼ºµÇ¸ç, ±Ù°Å°¡ ¾øÀ¸¸é "È®ÀÎ ºÒ°¡"·Î ´äÇÏ°í ´ã´ç ºÎ¼­¸¦ ¾È³»ÇÕ´Ï´Ù. ÁúÀÇ¡¤´äº¯Àº °¨»ç ·Î±×¿¡ ±â·ÏµË´Ï´Ù. (½Ã¿¬¿ë °¡»ó µ¥ÀÌÅÍ)</div>
+              <div class="guard"><b>í™˜ê° ì°¨ë‹¨</b> ? ëª¨ë“  ë¬¸ìž¥ì€ ì¢Œì¸¡ ê·¼ê±° ë¬¸ì„œì—ì„œë§Œ ìƒì„±ë˜ë©°, ê·¼ê±°ê°€ ì—†ìœ¼ë©´ "í™•ì¸ ë¶ˆê°€"ë¡œ ë‹µí•˜ê³  ë‹´ë‹¹ ë¶€ì„œë¥¼ ì•ˆë‚´í•©ë‹ˆë‹¤. ì§ˆì˜Â·ë‹µë³€ì€ ê°ì‚¬ ë¡œê·¸ì— ê¸°ë¡ë©ë‹ˆë‹¤. (ì‹œì—°ìš© ê°€ìƒ ë°ì´í„°)</div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- ============ ¹Î¿ø ´äº¯ Áö¿ø ============ -->
+      <!-- ============ ë¯¼ì› ë‹µë³€ ì§€ì› ============ -->
       <section class="view" id="v-minwon">
         <div class="minwon-grid">
           <div class="panel">
-            <div class="panel-h"><h3>Á¢¼ö ¹Î¿ø ¿ø¹®</h3><span class="pill warn">·¯½Ã¾Æ¾î</span><span class="sub">±¤»ê365 Á¢¼ö 2026-10-01 09:12</span></div>
+            <div class="panel-h"><h3>ì ‘ìˆ˜ ë¯¼ì› ì›ë¬¸</h3><span class="pill warn">ëŸ¬ì‹œì•„ì–´</span><span class="sub">ê´‘ì‚°365 ì ‘ìˆ˜ 2026-10-01 09:12</span></div>
             <div class="panel-b">
-              <div class="raw">¬©¬Õ¬â¬Ñ¬Ó¬ã¬ä¬Ó¬å¬Û¬ä¬Ö! ¬®¬Ö¬ß¬ñ ¬Ù¬à¬Ó¬å¬ä <span class="mask">¬¡***¬Û</span>, ¬ñ ¬Ø¬Ú¬Ó¬å ¬Ó ¬£¬à¬Ý¬î¬Ô¬à¬Ü-¬Õ¬à¬ß¬Ö. ¬±¬à¬Õ¬ã¬Ü¬Ñ¬Ø¬Ú¬ä¬Ö, ¬á¬à¬Ø¬Ñ¬Ý¬å¬Û¬ã¬ä¬Ñ, ¬Ü¬Ñ¬Ü ¬Ó¬í¬Ò¬â¬à¬ã¬Ú¬ä¬î ¬ã¬ä¬Ñ¬â¬í¬Û ¬Õ¬Ú¬Ó¬Ñ¬ß ¬Ú ¬ç¬à¬Ý¬à¬Õ¬Ú¬Ý¬î¬ß¬Ú¬Ü? ¬³¬Ü¬à¬Ý¬î¬Ü¬à ¬ï¬ä¬à ¬ã¬ä¬à¬Ú¬ä ¬Ú ¬Ü¬å¬Õ¬Ñ ¬à¬Ò¬â¬Ñ¬ë¬Ñ¬ä¬î¬ã¬ñ? ¬®¬à¬Û ¬ß¬à¬Þ¬Ö¬â: <span class="mask">010-****-1234</span>. ¬³¬á¬Ñ¬ã¬Ú¬Ò¬à!</div>
+              <div class="raw">Ð—Ð´Ñ€Ð°Ð²ÑÑ‚Ð²ÑƒÐ¹Ñ‚Ðµ! ÐœÐµÐ½Ñ Ð·Ð¾Ð²ÑƒÑ‚ <span class="mask">Ð***Ð¹</span>, Ñ Ð¶Ð¸Ð²Ñƒ Ð² Ð’Ð¾Ð»ÑŒÐ³Ð¾Ðº-Ð´Ð¾Ð½Ðµ. ÐŸÐ¾Ð´ÑÐºÐ°Ð¶Ð¸Ñ‚Ðµ, Ð¿Ð¾Ð¶Ð°Ð»ÑƒÐ¹ÑÑ‚Ð°, ÐºÐ°Ðº Ð²Ñ‹Ð±Ñ€Ð¾ÑÐ¸Ñ‚ÑŒ ÑÑ‚Ð°Ñ€Ñ‹Ð¹ Ð´Ð¸Ð²Ð°Ð½ Ð¸ Ñ…Ð¾Ð»Ð¾Ð´Ð¸Ð»ÑŒÐ½Ð¸Ðº? Ð¡ÐºÐ¾Ð»ÑŒÐºÐ¾ ÑÑ‚Ð¾ ÑÑ‚Ð¾Ð¸Ñ‚ Ð¸ ÐºÑƒÐ´Ð° Ð¾Ð±Ñ€Ð°Ñ‰Ð°Ñ‚ÑŒÑÑ? ÐœÐ¾Ð¹ Ð½Ð¾Ð¼ÐµÑ€: <span class="mask">010-****-1234</span>. Ð¡Ð¿Ð°ÑÐ¸Ð±Ð¾!</div>
               <div class="meta-line">
-                <span class="pill ai">°³ÀÎÁ¤º¸ ÀÚµ¿ ¸¶½ºÅ·</span>
-                <span class="pill info">¾ð¾î °¨Áö: ·¯½Ã¾Æ¾î</span>
+                <span class="pill ai">ê°œì¸ì •ë³´ ìžë™ ë§ˆìŠ¤í‚¹</span>
+                <span class="pill info">ì–¸ì–´ ê°ì§€: ëŸ¬ì‹œì•„ì–´</span>
               </div>
               <div style="margin-top:14px">
-                <button class="btn" id="mwBtn">AI ºÐ¼®¡¤´äº¯ ÃÊ¾È »ý¼º</button>
+                <button class="btn" id="mwBtn">AI ë¶„ì„Â·ë‹µë³€ ì´ˆì•ˆ ìƒì„±</button>
               </div>
-              <div class="spin" id="mwSpin">? ¹ø¿ª ¡¤ ¼Ò°ü ºÐ·ù ¡¤ À¯»ç»ç·Ê ´ëÁ¶ ¡¤ ´äº¯ ÃÊ¾È »ý¼º Áß¡¦</div>
+              <div class="spin" id="mwSpin">? ë²ˆì—­ Â· ì†Œê´€ ë¶„ë¥˜ Â· ìœ ì‚¬ì‚¬ë¡€ ëŒ€ì¡° Â· ë‹µë³€ ì´ˆì•ˆ ìƒì„± ì¤‘â€¦</div>
             </div>
           </div>
           <div class="panel">
-            <div class="panel-h"><h3>AI Ã³¸® °á°ú</h3><span class="ai-badge">°Ë¼ö ÈÄ ¹ß¼Û</span></div>
+            <div class="panel-h"><h3>AI ì²˜ë¦¬ ê²°ê³¼</h3><span class="ai-badge">ê²€ìˆ˜ í›„ ë°œì†¡</span></div>
             <div class="panel-b">
               <div class="step" id="mwStep">
                 <div class="blockline">
-                  <h5><span class="ai-badge">ÇÑ±¹¾î ¹ø¿ª</span></h5>
-                  ¾È³çÇÏ¼¼¿ä! Àú´Â ¿ù°îµ¿¿¡ »ç´Â <b>¬¡***¬Û</b>ÀÔ´Ï´Ù. ¿À·¡µÈ ¼ÒÆÄ¿Í ³ÃÀå°í¸¦ ¾î¶»°Ô ¹ö·Á¾ß ÇÏ´ÂÁö ¾Ë·ÁÁÖ¼¼¿ä. ºñ¿ëÀº ¾ó¸¶ÀÌ°í ¾îµð¿¡ ¹®ÀÇÇØ¾ß ÇÏ³ª¿ä? °¨»çÇÕ´Ï´Ù!
+                  <h5><span class="ai-badge">í•œêµ­ì–´ ë²ˆì—­</span></h5>
+                  ì•ˆë…•í•˜ì„¸ìš”! ì €ëŠ” ì›”ê³¡ë™ì— ì‚¬ëŠ” <b>Ð***Ð¹</b>ìž…ë‹ˆë‹¤. ì˜¤ëž˜ëœ ì†ŒíŒŒì™€ ëƒ‰ìž¥ê³ ë¥¼ ì–´ë–»ê²Œ ë²„ë ¤ì•¼ í•˜ëŠ”ì§€ ì•Œë ¤ì£¼ì„¸ìš”. ë¹„ìš©ì€ ì–¼ë§ˆì´ê³  ì–´ë””ì— ë¬¸ì˜í•´ì•¼ í•˜ë‚˜ìš”? ê°ì‚¬í•©ë‹ˆë‹¤!
                 </div>
                 <div class="blockline">
-                  <h5><span class="ai-badge">ºÐ·ù¡¤¼±·Ê</span></h5>
-                  ¼Ò°ü: <b>Ã»¼ÒÇàÁ¤ ´ã´ç</b> (´ëÇüÆó±â¹°) ¡¤ À¯»ç Ã³¸®»ç·Ê 12°Ç ¡¤ Æò±Õ Ã³¸® 1ÀÏ ¡¤ <b>Æó°¡Àü(³ÃÀå°í)Àº ¹«»ó ¹æ¹®¼ö°Å ´ë»ó</b> ? ¼ö¼ö·á ¾È³»¿¡¼­ Á¦¿ÜÇØ¾ß ÇÕ´Ï´Ù.
+                  <h5><span class="ai-badge">ë¶„ë¥˜Â·ì„ ë¡€</span></h5>
+                  ì†Œê´€: <b>ì²­ì†Œí–‰ì • ë‹´ë‹¹</b> (ëŒ€í˜•íê¸°ë¬¼) Â· ìœ ì‚¬ ì²˜ë¦¬ì‚¬ë¡€ 12ê±´ Â· í‰ê·  ì²˜ë¦¬ 1ì¼ Â· <b>íê°€ì „(ëƒ‰ìž¥ê³ )ì€ ë¬´ìƒ ë°©ë¬¸ìˆ˜ê±° ëŒ€ìƒ</b> ? ìˆ˜ìˆ˜ë£Œ ì•ˆë‚´ì—ì„œ ì œì™¸í•´ì•¼ í•©ë‹ˆë‹¤.
                 </div>
                 <div class="blockline soft">
-                  <h5><span class="ai-badge">´äº¯ ÃÊ¾È (ÇÑ±¹¾î)</span> ´ã´çÀÚ ¼öÁ¤ °¡´É</h5>
-                  ¾È³çÇÏ¼¼¿ä, ±¤»ê±¸Ã» Ã»¼ÒÇàÁ¤ ´ã´çÀÔ´Ï´Ù. ¨ç ¼ÒÆÄ´Â ´ëÇüÆó±â¹° ½Å°í ´ë»óÀ¸·Î, ±¤»ê365 ¶Ç´Â ÇàÁ¤º¹Áö¼¾ÅÍ¿¡¼­ ½Å°í ÈÄ ½ºÆ¼Ä¿¸¦ ºÎÂøÇØ ¹èÃâÇÏ½Ã¸é µË´Ï´Ù(¼ö¼ö·á´Â Ç°¸ñ¡¤Å©±âº° »óÀÌ). ¨è ³ÃÀå°í µî Æó°¡ÀüÀº <b>¹«»ó ¹æ¹®¼ö°Å ¼­ºñ½º</b> ´ë»óÀÌ¹Ç·Î ¼ö¼ö·á ¾øÀÌ ÀüÈ­ ¿¹¾àÀ¸·Î ¼ö°ÅµË´Ï´Ù. ÀÚ¼¼ÇÑ ÀýÂ÷¸¦ ÇÔ²² ¾È³»µå¸³´Ï´Ù¡¦
+                  <h5><span class="ai-badge">ë‹µë³€ ì´ˆì•ˆ (í•œêµ­ì–´)</span> ë‹´ë‹¹ìž ìˆ˜ì • ê°€ëŠ¥</h5>
+                  ì•ˆë…•í•˜ì„¸ìš”, ê´‘ì‚°êµ¬ì²­ ì²­ì†Œí–‰ì • ë‹´ë‹¹ìž…ë‹ˆë‹¤. â‘  ì†ŒíŒŒëŠ” ëŒ€í˜•íê¸°ë¬¼ ì‹ ê³  ëŒ€ìƒìœ¼ë¡œ, ê´‘ì‚°365 ë˜ëŠ” í–‰ì •ë³µì§€ì„¼í„°ì—ì„œ ì‹ ê³  í›„ ìŠ¤í‹°ì»¤ë¥¼ ë¶€ì°©í•´ ë°°ì¶œí•˜ì‹œë©´ ë©ë‹ˆë‹¤(ìˆ˜ìˆ˜ë£ŒëŠ” í’ˆëª©Â·í¬ê¸°ë³„ ìƒì´). â‘¡ ëƒ‰ìž¥ê³  ë“± íê°€ì „ì€ <b>ë¬´ìƒ ë°©ë¬¸ìˆ˜ê±° ì„œë¹„ìŠ¤</b> ëŒ€ìƒì´ë¯€ë¡œ ìˆ˜ìˆ˜ë£Œ ì—†ì´ ì „í™” ì˜ˆì•½ìœ¼ë¡œ ìˆ˜ê±°ë©ë‹ˆë‹¤. ìžì„¸í•œ ì ˆì°¨ë¥¼ í•¨ê»˜ ì•ˆë‚´ë“œë¦½ë‹ˆë‹¤â€¦
                 </div>
                 <div class="blockline">
-                  <h5><span class="ai-badge">·¯½Ã¾Æ¾î ¿ª¹ø¿ª ¹Ì¸®º¸±â</span></h5>
-                  ¬©¬Õ¬â¬Ñ¬Ó¬ã¬ä¬Ó¬å¬Û¬ä¬Ö! ¨ç ¬¥¬Ú¬Ó¬Ñ¬ß: ¬á¬à¬Õ¬Ñ¬Û¬ä¬Ö ¬Ù¬Ñ¬ñ¬Ó¬Ü¬å ¬é¬Ö¬â¬Ö¬Ù ¡ì¬¬¬Ó¬Ñ¬ß¬ã¬Ñ¬ß365¡í¡¦ ¨è ¬·¬à¬Ý¬à¬Õ¬Ú¬Ý¬î¬ß¬Ú¬Ü: <b>¬Ò¬Ö¬ã¬á¬Ý¬Ñ¬ä¬ß¬í¬Û ¬Ó¬í¬Ö¬Ù¬Õ¬ß¬à¬Û ¬Ó¬í¬Ó¬à¬Ù</b> ¬Ò¬í¬ä¬à¬Ó¬à¬Û ¬ä¬Ö¬ç¬ß¬Ú¬Ü¬Ú, ¬Ò¬Ö¬Ù ¬à¬á¬Ý¬Ñ¬ä¬í¡¦
+                  <h5><span class="ai-badge">ëŸ¬ì‹œì•„ì–´ ì—­ë²ˆì—­ ë¯¸ë¦¬ë³´ê¸°</span></h5>
+                  Ð—Ð´Ñ€Ð°Ð²ÑÑ‚Ð²ÑƒÐ¹Ñ‚Ðµ! â‘  Ð”Ð¸Ð²Ð°Ð½: Ð¿Ð¾Ð´Ð°Ð¹Ñ‚Ðµ Ð·Ð°ÑÐ²ÐºÑƒ Ñ‡ÐµÑ€ÐµÐ· â‰ªÐšÐ²Ð°Ð½ÑÐ°Ð½365â‰«â€¦ â‘¡ Ð¥Ð¾Ð»Ð¾Ð´Ð¸Ð»ÑŒÐ½Ð¸Ðº: <b>Ð±ÐµÑÐ¿Ð»Ð°Ñ‚Ð½Ñ‹Ð¹ Ð²Ñ‹ÐµÐ·Ð´Ð½Ð¾Ð¹ Ð²Ñ‹Ð²Ð¾Ð·</b> Ð±Ñ‹Ñ‚Ð¾Ð²Ð¾Ð¹ Ñ‚ÐµÑ…Ð½Ð¸ÐºÐ¸, Ð±ÐµÐ· Ð¾Ð¿Ð»Ð°Ñ‚Ñ‹â€¦
                 </div>
                 <div class="blockline">
-                  <h5>¹ß¼Û Àü °Ë¼ö Ã¼Å©¸®½ºÆ®</h5>
+                  <h5>ë°œì†¡ ì „ ê²€ìˆ˜ ì²´í¬ë¦¬ìŠ¤íŠ¸</h5>
                   <div class="checklist">
-                    <label><input type="checkbox" checked> ¼Ò°ü ºÐ·ù°¡ ÀûÀýÇÑ°¡ (Ã»¼ÒÇàÁ¤)</label>
-                    <label><input type="checkbox" checked> ¼ö¼ö·á ¾È³»°¡ Á¤È®ÇÑ°¡ (Æó°¡Àü ¹«»ó¼ö°Å ¹Ý¿µ)</label>
-                    <label><input type="checkbox"> ¿ª¹ø¿ª ³»¿ëÀÌ ÇÑ±¹¾î ´äº¯°ú ÀÏÄ¡ÇÏ´Â°¡</label>
+                    <label><input type="checkbox" checked> ì†Œê´€ ë¶„ë¥˜ê°€ ì ì ˆí•œê°€ (ì²­ì†Œí–‰ì •)</label>
+                    <label><input type="checkbox" checked> ìˆ˜ìˆ˜ë£Œ ì•ˆë‚´ê°€ ì •í™•í•œê°€ (íê°€ì „ ë¬´ìƒìˆ˜ê±° ë°˜ì˜)</label>
+                    <label><input type="checkbox"> ì—­ë²ˆì—­ ë‚´ìš©ì´ í•œêµ­ì–´ ë‹µë³€ê³¼ ì¼ì¹˜í•˜ëŠ”ê°€</label>
                   </div>
                 </div>
                 <div style="display:flex;gap:8px;flex-wrap:wrap">
-                  <button class="btn">°Ë¼ö ¿Ï·á ¡¤ ±¤»ê365 ¹ß¼Û</button>
-                  <button class="btn ghost">ÃÊ¾È ¼öÁ¤</button>
+                  <button class="btn">ê²€ìˆ˜ ì™„ë£Œ Â· ê´‘ì‚°365 ë°œì†¡</button>
+                  <button class="btn ghost">ì´ˆì•ˆ ìˆ˜ì •</button>
                 </div>
               </div>
-              <div id="mwPh" style="color:#9AA9BE;font-size:.85rem;text-align:center;padding:90px 10px">ÁÂÃø¿¡¼­ [AI ºÐ¼®¡¤´äº¯ ÃÊ¾È »ý¼º]À» ´©¸£¸é<br>¹ø¿ª ¡æ ºÐ·ù ¡æ ÃÊ¾È ¡æ ¿ª¹ø¿ª °á°ú°¡ Ç¥½ÃµË´Ï´Ù.</div>
+              <div id="mwPh" style="color:#9AA9BE;font-size:.85rem;text-align:center;padding:90px 10px">ì¢Œì¸¡ì—ì„œ [AI ë¶„ì„Â·ë‹µë³€ ì´ˆì•ˆ ìƒì„±]ì„ ëˆ„ë¥´ë©´<br>ë²ˆì—­ â†’ ë¶„ë¥˜ â†’ ì´ˆì•ˆ â†’ ì—­ë²ˆì—­ ê²°ê³¼ê°€ í‘œì‹œë©ë‹ˆë‹¤.</div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- ============ °ø¹®¼­ ÃÊ¾È ============ -->
+      <!-- ============ ê³µë¬¸ì„œ ì´ˆì•ˆ ============ -->
       <section class="view" id="v-doc">
         <div class="doc-grid">
           <div class="panel">
-            <div class="panel-h"><h3>ÀÛ¼º °³¿ä ÀÔ·Â</h3><span class="sub">¹®¼­ À¯ÇüÀ» °í¸£°í ÇÙ½É ³»¿ë¸¸ ÀûÀ¸¼¼¿ä</span></div>
+            <div class="panel-h"><h3>ìž‘ì„± ê°œìš” ìž…ë ¥</h3><span class="sub">ë¬¸ì„œ ìœ í˜•ì„ ê³ ë¥´ê³  í•µì‹¬ ë‚´ìš©ë§Œ ì ìœ¼ì„¸ìš”</span></div>
             <div class="panel-b">
               <div class="seg" id="docSeg">
-                <button aria-pressed="true">³»ºÎ º¸°í¼­</button>
-                <button aria-pressed="false">´ë¿Ü °ø¹®</button>
-                <button aria-pressed="false">º¸µµÀÚ·á</button>
+                <button aria-pressed="true">ë‚´ë¶€ ë³´ê³ ì„œ</button>
+                <button aria-pressed="false">ëŒ€ì™¸ ê³µë¬¸</button>
+                <button aria-pressed="false">ë³´ë„ìžë£Œ</button>
               </div>
-              <textarea id="docInput" aria-label="°³¿ä ÀÔ·Â">¹Ì·¡Â÷ ±¹°¡»ê´Ü Àü·«È¯°æ¿µÇâÆò°¡ °ø¶÷ ÀÇ°ß ¼ö·Å Áß°£°á°ú º¸°í.
-- Á¢¼ö ÀÇ°ß 42°Ç (9.21~9.30)
-- ¼ÒÀ½¡¤Áøµ¿ 18°Ç, ±³Åë 11°Ç, »ýÈ°È¯°æ 9°Ç, ±âÅ¸ 4°Ç
-- ¼ÒÀ½ Àú°¨ ´ëÃ¥ º¸¿Ï ¿ä±¸°¡ ´Ù¼ö
-- °ø¶÷ ¸¶°¨ 10.12, ÃÖÁ¾ °á°ú´Â ¸¶°¨ ÈÄ 1ÁÖ ³» º¸°í ¿¹Á¤</textarea>
-              <div style="margin-top:12px"><button class="btn" id="docBtn">AI ÃÊ¾È »ý¼º</button></div>
-              <div class="spin" id="docSpin">? ÇàÁ¤ ¹®¼­ ¼­½Ä Àû¿ë ¡¤ ÃÊ¾È »ý¼º Áß¡¦</div>
+              <textarea id="docInput" aria-label="ê°œìš” ìž…ë ¥">ë¯¸ëž˜ì°¨ êµ­ê°€ì‚°ë‹¨ ì „ëžµí™˜ê²½ì˜í–¥í‰ê°€ ê³µëžŒ ì˜ê²¬ ìˆ˜ë ´ ì¤‘ê°„ê²°ê³¼ ë³´ê³ .
+- ì ‘ìˆ˜ ì˜ê²¬ 42ê±´ (9.21~9.30)
+- ì†ŒìŒÂ·ì§„ë™ 18ê±´, êµí†µ 11ê±´, ìƒí™œí™˜ê²½ 9ê±´, ê¸°íƒ€ 4ê±´
+- ì†ŒìŒ ì €ê° ëŒ€ì±… ë³´ì™„ ìš”êµ¬ê°€ ë‹¤ìˆ˜
+- ê³µëžŒ ë§ˆê° 10.12, ìµœì¢… ê²°ê³¼ëŠ” ë§ˆê° í›„ 1ì£¼ ë‚´ ë³´ê³  ì˜ˆì •</textarea>
+              <div style="margin-top:12px"><button class="btn" id="docBtn">AI ì´ˆì•ˆ ìƒì„±</button></div>
+              <div class="spin" id="docSpin">? í–‰ì • ë¬¸ì„œ ì„œì‹ ì ìš© Â· ì´ˆì•ˆ ìƒì„± ì¤‘â€¦</div>
             </div>
           </div>
           <div class="panel">
-            <div class="panel-h"><h3>»ý¼º °á°ú</h3><span class="ai-badge">ÇàÁ¤ ¼­½Ä ÀÚµ¿ ÁØ¼ö</span></div>
+            <div class="panel-h"><h3>ìƒì„± ê²°ê³¼</h3><span class="ai-badge">í–‰ì • ì„œì‹ ìžë™ ì¤€ìˆ˜</span></div>
             <div class="panel-b">
               <div class="gong" id="gongBox">
-                <div class="ph" id="gongPh">ÁÂÃø °³¿ä¸¦ ÀÔ·ÂÇÏ°í [AI ÃÊ¾È »ý¼º]À» ´©¸£¸é<br>°áÀç ¼­½Ä¿¡ ¸ÂÃá ÃÊ¾ÈÀÌ »ý¼ºµË´Ï´Ù.</div>
+                <div class="ph" id="gongPh">ì¢Œì¸¡ ê°œìš”ë¥¼ ìž…ë ¥í•˜ê³  [AI ì´ˆì•ˆ ìƒì„±]ì„ ëˆ„ë¥´ë©´<br>ê²°ìž¬ ì„œì‹ì— ë§žì¶˜ ì´ˆì•ˆì´ ìƒì„±ë©ë‹ˆë‹¤.</div>
                 <div id="gongDoc" style="display:none">
                   <div class="head">
-                    <div class="org">±¤»ê±¸</div>
-                    <div class="no">¹®¼­¹øÈ£: È¯°æ 2026-<mark>ÀÚµ¿ºÎ¿©</mark><br>½ÃÇàÀÏÀÚ: 2026. 10. 1.</div>
+                    <div class="org">ê´‘ì‚°êµ¬</div>
+                    <div class="no">ë¬¸ì„œë²ˆí˜¸: í™˜ê²½ 2026-<mark>ìžë™ë¶€ì—¬</mark><br>ì‹œí–‰ì¼ìž: 2026. 10. 1.</div>
                   </div>
-                  <div class="row"><span class="k">¼ö½Å</span><span>³»ºÎ°áÀç</span></div>
-                  <div class="subject">Á¦¸ñ: ¹Ì·¡Â÷ ±¹°¡»ê´Ü Àü·«È¯°æ¿µÇâÆò°¡ °ø¶÷ ÀÇ°ß ¼ö·Å Áß°£°á°ú º¸°í</div>
+                  <div class="row"><span class="k">ìˆ˜ì‹ </span><span>ë‚´ë¶€ê²°ìž¬</span></div>
+                  <div class="subject">ì œëª©: ë¯¸ëž˜ì°¨ êµ­ê°€ì‚°ë‹¨ ì „ëžµí™˜ê²½ì˜í–¥í‰ê°€ ê³µëžŒ ì˜ê²¬ ìˆ˜ë ´ ì¤‘ê°„ê²°ê³¼ ë³´ê³ </div>
                   <ol>
-                    <li>±¤ÁÖ ¹Ì·¡Â÷ ±¹°¡»ê´Ü Á¶¼º»ç¾÷ Àü·«È¯°æ¿µÇâÆò°¡(ÃÊ¾È) ÁÖ¹Î °ø¶÷(2026. 9. 21.~10. 12.)°ú °ü·ÃÇÏ¿© ÀÇ°ß ¼ö·Å Áß°£°á°ú¸¦ ´ÙÀ½°ú °°ÀÌ º¸°íÇÕ´Ï´Ù.</li>
-                    <li>Á¢¼ö ÇöÈ²: ÃÑ <b>42°Ç</b> (9. 21.~9. 30. ±âÁØ) ? ¼ÒÀ½¡¤Áøµ¿ 18°Ç(42.9%), ±³Åë 11°Ç(26.2%), »ýÈ°È¯°æ 9°Ç(21.4%), ±âÅ¸ 4°Ç(9.5%)</li>
-                    <li>ÁÖ¿ä ÀïÁ¡: °ø»ç ¹× ¿î¿µ ´Ü°èÀÇ <b>¼ÒÀ½ Àú°¨ ´ëÃ¥ º¸¿Ï ¿ä±¸</b>°¡ ´Ù¼öÀÌ¸ç, ÅëÇÐ·Î ÁÖº¯ °ø»ç Â÷·® µ¿¼± Á¶Á¤ ¿ä±¸°¡ µÚ¸¦ ÀÕ°í ÀÖ½À´Ï´Ù.</li>
-                    <li>ÇâÈÄ °èÈ¹: °ø¶÷ ¸¶°¨(10. 12.) ÈÄ 1ÁÖ ÀÌ³» ÀïÁ¡º° °ËÅä ÀÇ°ßÀ» Æ÷ÇÔÇÑ ÃÖÁ¾ °á°ú¸¦ º¸°íÇÏ°Ú½À´Ï´Ù. ³¡.</li>
+                    <li>ê´‘ì£¼ ë¯¸ëž˜ì°¨ êµ­ê°€ì‚°ë‹¨ ì¡°ì„±ì‚¬ì—… ì „ëžµí™˜ê²½ì˜í–¥í‰ê°€(ì´ˆì•ˆ) ì£¼ë¯¼ ê³µëžŒ(2026. 9. 21.~10. 12.)ê³¼ ê´€ë ¨í•˜ì—¬ ì˜ê²¬ ìˆ˜ë ´ ì¤‘ê°„ê²°ê³¼ë¥¼ ë‹¤ìŒê³¼ ê°™ì´ ë³´ê³ í•©ë‹ˆë‹¤.</li>
+                    <li>ì ‘ìˆ˜ í˜„í™©: ì´ <b>42ê±´</b> (9. 21.~9. 30. ê¸°ì¤€) ? ì†ŒìŒÂ·ì§„ë™ 18ê±´(42.9%), êµí†µ 11ê±´(26.2%), ìƒí™œí™˜ê²½ 9ê±´(21.4%), ê¸°íƒ€ 4ê±´(9.5%)</li>
+                    <li>ì£¼ìš” ìŸì : ê³µì‚¬ ë° ìš´ì˜ ë‹¨ê³„ì˜ <b>ì†ŒìŒ ì €ê° ëŒ€ì±… ë³´ì™„ ìš”êµ¬</b>ê°€ ë‹¤ìˆ˜ì´ë©°, í†µí•™ë¡œ ì£¼ë³€ ê³µì‚¬ ì°¨ëŸ‰ ë™ì„  ì¡°ì • ìš”êµ¬ê°€ ë’¤ë¥¼ ìž‡ê³  ìžˆìŠµë‹ˆë‹¤.</li>
+                    <li>í–¥í›„ ê³„íš: ê³µëžŒ ë§ˆê°(10. 12.) í›„ 1ì£¼ ì´ë‚´ ìŸì ë³„ ê²€í†  ì˜ê²¬ì„ í¬í•¨í•œ ìµœì¢… ê²°ê³¼ë¥¼ ë³´ê³ í•˜ê² ìŠµë‹ˆë‹¤. ë.</li>
                   </ol>
-                  <div class="sign">±¤ »ê ±¸ Ã» Àå</div>
+                  <div class="sign">ê´‘ ì‚° êµ¬ ì²­ ìž¥</div>
                 </div>
               </div>
               <div class="meta-line" id="gongMeta" style="display:none">
-                <span class="pill ai">°ø¶÷ ºÐ¼® °á°ú ÀÚµ¿ ÀÎ¿ë</span>
-                <span class="pill ok">¼­½Ä Á¡°Ë Åë°ú</span>
-                <span class="pill info">´ã´çÀÚ ¼öÁ¤ ÈÄ °áÀç »ó½Å</span>
+                <span class="pill ai">ê³µëžŒ ë¶„ì„ ê²°ê³¼ ìžë™ ì¸ìš©</span>
+                <span class="pill ok">ì„œì‹ ì ê²€ í†µê³¼</span>
+                <span class="pill info">ë‹´ë‹¹ìž ìˆ˜ì • í›„ ê²°ìž¬ ìƒì‹ </span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- ============ °ø¶÷ ÀÇ°ß ºÐ¼® ============ -->
+      <!-- ============ ê³µëžŒ ì˜ê²¬ ë¶„ì„ ============ -->
       <section class="view" id="v-sum">
         <div class="sum-grid">
           <div class="panel">
-            <div class="panel-h"><h3>°ø¶÷ ÀÇ°ß¼­ 42°Ç ? ÀïÁ¡ ºÐ·ù</h3><span class="ai-badge">ÀÚµ¿ ºÐ·ù</span><span class="sub">¹Ì·¡Â÷ ±¹°¡»ê´Ü È¯°æ¿µÇâÆò°¡</span></div>
+            <div class="panel-h"><h3>ê³µëžŒ ì˜ê²¬ì„œ 42ê±´ ? ìŸì  ë¶„ë¥˜</h3><span class="ai-badge">ìžë™ ë¶„ë¥˜</span><span class="sub">ë¯¸ëž˜ì°¨ êµ­ê°€ì‚°ë‹¨ í™˜ê²½ì˜í–¥í‰ê°€</span></div>
             <div class="panel-b">
               <div class="bar-row">
-                <div class="bar-item"><div class="lab"><b>¼ÒÀ½¡¤Áøµ¿</b><span>18°Ç ¡¤ 42.9%</span></div><div class="bar"><i data-w="86"></i></div></div>
-                <div class="bar-item"><div class="lab"><b>±³Åë¡¤°ø»çÂ÷·®</b><span>11°Ç ¡¤ 26.2%</span></div><div class="bar"><i data-w="52"></i></div></div>
-                <div class="bar-item"><div class="lab"><b>»ýÈ°È¯°æ(¸ÕÁö¡¤¹è¼ö)</b><span>9°Ç ¡¤ 21.4%</span></div><div class="bar"><i data-w="43"></i></div></div>
-                <div class="bar-item"><div class="lab"><b>±âÅ¸</b><span>4°Ç ¡¤ 9.5%</span></div><div class="bar"><i data-w="19"></i></div></div>
+                <div class="bar-item"><div class="lab"><b>ì†ŒìŒÂ·ì§„ë™</b><span>18ê±´ Â· 42.9%</span></div><div class="bar"><i data-w="86"></i></div></div>
+                <div class="bar-item"><div class="lab"><b>êµí†µÂ·ê³µì‚¬ì°¨ëŸ‰</b><span>11ê±´ Â· 26.2%</span></div><div class="bar"><i data-w="52"></i></div></div>
+                <div class="bar-item"><div class="lab"><b>ìƒí™œí™˜ê²½(ë¨¼ì§€Â·ë°°ìˆ˜)</b><span>9ê±´ Â· 21.4%</span></div><div class="bar"><i data-w="43"></i></div></div>
+                <div class="bar-item"><div class="lab"><b>ê¸°íƒ€</b><span>4ê±´ Â· 9.5%</span></div><div class="bar"><i data-w="19"></i></div></div>
               </div>
-              <div class="guard" style="margin-top:14px"><b>ÀÚµ¿ Áý°è</b> ? Á¢¼öµÇ´Â ÀÇ°ß¼­¸¦ ½Ç½Ã°£ ºÐ·ù¡¤Áý°èÇÏ¸ç, ´ã´çÀÚ´Â ¿ø¹® ´ëÁ¶·Î È®ÀÎ¸¸ ÇÏ¸é µË´Ï´Ù.</div>
+              <div class="guard" style="margin-top:14px"><b>ìžë™ ì§‘ê³„</b> ? ì ‘ìˆ˜ë˜ëŠ” ì˜ê²¬ì„œë¥¼ ì‹¤ì‹œê°„ ë¶„ë¥˜Â·ì§‘ê³„í•˜ë©°, ë‹´ë‹¹ìžëŠ” ì›ë¬¸ ëŒ€ì¡°ë¡œ í™•ì¸ë§Œ í•˜ë©´ ë©ë‹ˆë‹¤.</div>
             </div>
           </div>
           <div class="panel">
-            <div class="panel-h"><h3>ÀïÁ¡º° ´ëÇ¥ ÀÇ°ß ¿ä¾à</h3><span class="ai-badge">¿ø¹® ¸µÅ©</span></div>
+            <div class="panel-h"><h3>ìŸì ë³„ ëŒ€í‘œ ì˜ê²¬ ìš”ì•½</h3><span class="ai-badge">ì›ë¬¸ ë§í¬</span></div>
             <div class="panel-b">
-              <div class="op-item"><b>[¼ÒÀ½¡¤Áøµ¿]</b> ¾ß°£ °ø»ç Á¦ÇÑ ½Ã°£ ¸í½Ã¿Í ¹æÀ½º® ¼±(à»)¼³Ä¡ ¿ä±¸ ? À¯»ç ÃëÁö 12°Ç ÅëÇÕ (ÀÇ°ß #3, #7 ¿Ü)</div>
-              <div class="op-item"><b>[±³Åë]</b> ÅëÇÐ ½Ã°£´ë °ø»ç Â÷·® ¿ìÈ¸ µ¿¼± ÁöÁ¤ ¿ä±¸ ? ÃÊµîÇÐ±³ ÀÎ±Ù ÁÖ¹Î Áß½É (ÀÇ°ß #11 ¿Ü)</div>
-              <div class="op-item"><b>[»ýÈ°È¯°æ]</b> ºñ»ê¸ÕÁö ÃøÁ¤°ª °ø°³ ÁÖ±â ´ÜÃà ¿ä±¸ (ÀÇ°ß #19 ¿Ü)</div>
+              <div class="op-item"><b>[ì†ŒìŒÂ·ì§„ë™]</b> ì•¼ê°„ ê³µì‚¬ ì œí•œ ì‹œê°„ ëª…ì‹œì™€ ë°©ìŒë²½ ì„ (å…ˆ)ì„¤ì¹˜ ìš”êµ¬ ? ìœ ì‚¬ ì·¨ì§€ 12ê±´ í†µí•© (ì˜ê²¬ #3, #7 ì™¸)</div>
+              <div class="op-item"><b>[êµí†µ]</b> í†µí•™ ì‹œê°„ëŒ€ ê³µì‚¬ ì°¨ëŸ‰ ìš°íšŒ ë™ì„  ì§€ì • ìš”êµ¬ ? ì´ˆë“±í•™êµ ì¸ê·¼ ì£¼ë¯¼ ì¤‘ì‹¬ (ì˜ê²¬ #11 ì™¸)</div>
+              <div class="op-item"><b>[ìƒí™œí™˜ê²½]</b> ë¹„ì‚°ë¨¼ì§€ ì¸¡ì •ê°’ ê³µê°œ ì£¼ê¸° ë‹¨ì¶• ìš”êµ¬ (ì˜ê²¬ #19 ì™¸)</div>
               <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap">
-                <button class="btn" data-jump2="v-doc">ÀÌ °á°ú·Î º¸°í¼­ ÃÊ¾È ¸¸µé±â</button>
-                <button class="btn ghost">ÀüÃ¼ ÀÇ°ß ¿ø¹® º¸±â</button>
+                <button class="btn" data-jump2="v-doc">ì´ ê²°ê³¼ë¡œ ë³´ê³ ì„œ ì´ˆì•ˆ ë§Œë“¤ê¸°</button>
+                <button class="btn ghost">ì „ì²´ ì˜ê²¬ ì›ë¬¸ ë³´ê¸°</button>
               </div>
             </div>
           </div>
@@ -500,15 +500,15 @@ nav.side button .new{margin-left:auto;background:var(--ai);color:#fff;font-size:
     </div>
 
     <div class="footer-note">
-      <b>±¤»ê AI ÇàÁ¤Áö¿ø ½Ã½ºÅÛ ? °ø¹«¿ø¿ë Á¦¾È ½Ã¿¬ ¸ñ¾÷</b> ¡¤ È­¸éÀÇ ¹Î¿ø¡¤°ø¹®¡¤±ÔÁ¤ ³»¿ëÀº ±â´É ½Ã¿¬À» À§ÇÑ °¡»ó µ¥ÀÌÅÍÀÌ¸ç, ½ÇÁ¦ ¹ý·É¡¤ÁöÄ§ Àû¿ë ½Ã ¿ø¹® È®ÀÎÀÌ ÇÊ¿äÇÕ´Ï´Ù.<br>
-      Á¦¾È: ¢ßÅõµðÁöÆ® (2Digit) ? ¿ÂÇÁ·¹¹Ì½º ¼Ò¹ö¸° AI ¡¤ AgenticRAG ÃâÃ³ ÀÎ¿ë ¡¤ OWASP/KISA ±âÁØ º¸¾È Á¡°Ë
+      <b>ê´‘ì‚° AI í–‰ì •ì§€ì› ì‹œìŠ¤í…œ ? ê³µë¬´ì›ìš© ì œì•ˆ ì‹œì—° ëª©ì—…</b> Â· í™”ë©´ì˜ ë¯¼ì›Â·ê³µë¬¸Â·ê·œì • ë‚´ìš©ì€ ê¸°ëŠ¥ ì‹œì—°ì„ ìœ„í•œ ê°€ìƒ ë°ì´í„°ì´ë©°, ì‹¤ì œ ë²•ë ¹Â·ì§€ì¹¨ ì ìš© ì‹œ ì›ë¬¸ í™•ì¸ì´ í•„ìš”í•©ë‹ˆë‹¤.<br>
+      ì œì•ˆ: ãˆœíˆ¬ë””ì§€íŠ¸ (2Digit) ? ì˜¨í”„ë ˆë¯¸ìŠ¤ ì†Œë²„ë¦° AI Â· AgenticRAG ì¶œì²˜ ì¸ìš© Â· OWASP/KISA ê¸°ì¤€ ë³´ì•ˆ ì ê²€
     </div>
   </div>
 </div>
 
 <script>
-/* ---------- ºä ÀüÈ¯ ---------- */
-const titles={ 'v-home':['¿À´ÃÀÇ ¾÷¹«','È¨ ¡¤ 2026.10.01(¸ñ)'], 'v-qa':['±ÔÁ¤¡¤ÁöÄ§ ÁúÀÇ','AI ¾÷¹«Áö¿ø'], 'v-minwon':['¹Î¿ø ´äº¯ Áö¿ø','AI ¾÷¹«Áö¿ø ¡¤ ±¤»ê365 ¿¬°è'], 'v-doc':['°ø¹®¼­ ÃÊ¾È','AI ¾÷¹«Áö¿ø'], 'v-sum':['°ø¶÷ ÀÇ°ß ºÐ¼®','AI ¾÷¹«Áö¿ø'] };
+/* ---------- ë·° ì „í™˜ ---------- */
+const titles={ 'v-home':['ì˜¤ëŠ˜ì˜ ì—…ë¬´','í™ˆ Â· 2026.10.01(ëª©)'], 'v-qa':['ê·œì •Â·ì§€ì¹¨ ì§ˆì˜','AI ì—…ë¬´ì§€ì›'], 'v-minwon':['ë¯¼ì› ë‹µë³€ ì§€ì›','AI ì—…ë¬´ì§€ì› Â· ê´‘ì‚°365 ì—°ê³„'], 'v-doc':['ê³µë¬¸ì„œ ì´ˆì•ˆ','AI ì—…ë¬´ì§€ì›'], 'v-sum':['ê³µëžŒ ì˜ê²¬ ë¶„ì„','AI ì—…ë¬´ì§€ì›'] };
 function showView(id){
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
   document.getElementById(id).classList.add('active');
@@ -524,22 +524,22 @@ document.getElementById('sideNav').addEventListener('click',e=>{
 document.querySelectorAll('[data-jump]').forEach(b=>b.addEventListener('click',()=>showView(b.dataset.jump)));
 document.querySelectorAll('[data-jump2]').forEach(b=>b.addEventListener('click',()=>showView(b.dataset.jump2)));
 
-/* ---------- ±ÔÁ¤ ÁúÀÇ ---------- */
+/* ---------- ê·œì • ì§ˆì˜ ---------- */
 const QA={
   ad:{
-    q:'¿Á¿Ü±¤°í¹° Çã°¡ Ã³¸®±âÇÑ°ú ±¸ºñ¼­·ù´Â?',
-    a:'¿Á¿Ü±¤°í¹° Ç¥½Ã¡¤¼³Ä¡ Çã°¡ÀÇ Ã³¸®±âÇÑ°ú ±¸ºñ¼­·ù´Â ´ÙÀ½°ú °°½À´Ï´Ù.\n\n? Ã³¸®±âÇÑ: Á¢¼öÀÏºÎÅÍ Åë»ó 7ÀÏ ÀÌ³» (ÇöÀå È®ÀÎÀÌ ÇÊ¿äÇÑ °æ¿ì ¿¬Àå °¡´É ? ¿¬Àå ½Ã ½ÅÃ»ÀÎ ÅëÁö ÇÊ¿ä)\n? ±¸ºñ¼­·ù: ¨ç Çã°¡ ½ÅÃ»¼­ ¨è ±¤°í¹° ¸ð¾ç¡¤Å©±â¡¤Àç·á ¸í¼¼¼­ ¨é ¼³Ä¡ À§Ä¡ µµ¸é¡¤»çÁø ¨ê °Ç¹° ¼ÒÀ¯ÀÚ »ç¿ë ½Â³«¼­(ÀÓÂ÷ °Ç¹°ÀÎ °æ¿ì)\n? À¯ÀÇ: ¾î¸°ÀÌº¸È£±¸¿ª µî Ç¥½Ã Á¦ÇÑ Áö¿ª ÇØ´ç ¿©ºÎ¸¦ ¸ÕÀú È®ÀÎÇØ¾ß ÇÏ¸ç, °ü³» Á¦ÇÑ ±¸¿ª ¸ñ·ÏÀº ³»ºÎ ¾÷¹«Æí¶÷ º°Ç¥¿¡ Á¤¸®µÇ¾î ÀÖ½À´Ï´Ù.\n\nÀ¯»ç Ã³¸® ¼±·Ê 9°ÇÀÌ È®ÀÎµË´Ï´Ù ? ÃÖ±Ù ¹Ý·Á »çÀ¯´Â ´ëºÎºÐ »ç¿ë ½Â³«¼­ ´©¶ôÀÌ¾ú½À´Ï´Ù.',
-    src:['¿Á¿Ü±¤°í¹°¹ý ½ÃÇà·É (ÇØ´ç Á¶Ç×)','±¤»ê±¸ ¿Á¿Ü±¤°í¹° Á¶·Ê','³»ºÎ ¾÷¹«Æí¶÷ ? ±¤°í¹° Çã°¡ ¡×3','Ã³¸® ¼±·Ê 9°Ç']
+    q:'ì˜¥ì™¸ê´‘ê³ ë¬¼ í—ˆê°€ ì²˜ë¦¬ê¸°í•œê³¼ êµ¬ë¹„ì„œë¥˜ëŠ”?',
+    a:'ì˜¥ì™¸ê´‘ê³ ë¬¼ í‘œì‹œÂ·ì„¤ì¹˜ í—ˆê°€ì˜ ì²˜ë¦¬ê¸°í•œê³¼ êµ¬ë¹„ì„œë¥˜ëŠ” ë‹¤ìŒê³¼ ê°™ìŠµë‹ˆë‹¤.\n\n? ì²˜ë¦¬ê¸°í•œ: ì ‘ìˆ˜ì¼ë¶€í„° í†µìƒ 7ì¼ ì´ë‚´ (í˜„ìž¥ í™•ì¸ì´ í•„ìš”í•œ ê²½ìš° ì—°ìž¥ ê°€ëŠ¥ ? ì—°ìž¥ ì‹œ ì‹ ì²­ì¸ í†µì§€ í•„ìš”)\n? êµ¬ë¹„ì„œë¥˜: â‘  í—ˆê°€ ì‹ ì²­ì„œ â‘¡ ê´‘ê³ ë¬¼ ëª¨ì–‘Â·í¬ê¸°Â·ìž¬ë£Œ ëª…ì„¸ì„œ â‘¢ ì„¤ì¹˜ ìœ„ì¹˜ ë„ë©´Â·ì‚¬ì§„ â‘£ ê±´ë¬¼ ì†Œìœ ìž ì‚¬ìš© ìŠ¹ë‚™ì„œ(ìž„ì°¨ ê±´ë¬¼ì¸ ê²½ìš°)\n? ìœ ì˜: ì–´ë¦°ì´ë³´í˜¸êµ¬ì—­ ë“± í‘œì‹œ ì œí•œ ì§€ì—­ í•´ë‹¹ ì—¬ë¶€ë¥¼ ë¨¼ì € í™•ì¸í•´ì•¼ í•˜ë©°, ê´€ë‚´ ì œí•œ êµ¬ì—­ ëª©ë¡ì€ ë‚´ë¶€ ì—…ë¬´íŽ¸ëžŒ ë³„í‘œì— ì •ë¦¬ë˜ì–´ ìžˆìŠµë‹ˆë‹¤.\n\nìœ ì‚¬ ì²˜ë¦¬ ì„ ë¡€ 9ê±´ì´ í™•ì¸ë©ë‹ˆë‹¤ ? ìµœê·¼ ë°˜ë ¤ ì‚¬ìœ ëŠ” ëŒ€ë¶€ë¶„ ì‚¬ìš© ìŠ¹ë‚™ì„œ ëˆ„ë½ì´ì—ˆìŠµë‹ˆë‹¤.',
+    src:['ì˜¥ì™¸ê´‘ê³ ë¬¼ë²• ì‹œí–‰ë ¹ (í•´ë‹¹ ì¡°í•­)','ê´‘ì‚°êµ¬ ì˜¥ì™¸ê´‘ê³ ë¬¼ ì¡°ë¡€','ë‚´ë¶€ ì—…ë¬´íŽ¸ëžŒ ? ê´‘ê³ ë¬¼ í—ˆê°€ Â§3','ì²˜ë¦¬ ì„ ë¡€ 9ê±´']
   },
   subsidy:{
-    q:'Áö¹æº¸Á¶±Ý Á¤»êº¸°í Á¦Ãâ ±âÇÑÀº?',
-    a:'Áö¹æº¸Á¶»ç¾÷ Á¤»êº¸°í ±âÇÑÀº ´ÙÀ½°ú °°½À´Ï´Ù.\n\n? º¸Á¶»ç¾÷ÀÚ´Â »ç¾÷ ¿Ï·á ÈÄ(¶Ç´Â È¸°è¿¬µµ Á¾·á ÈÄ) Á¤ÇØÁø ±âÇÑ ³» Á¤»êº¸°í¼­¸¦ Á¦ÃâÇØ¾ß ÇÏ¸ç, °ü³» ¿î¿µ ±âÁØ»ó Åë»ó 2°³¿ù ÀÌ³»ÀÔ´Ï´Ù.\n? Á¦Ãâ ¼­·ù: Á¤»êº¸°í¼­, ÁýÇà ³»¿ª Áõºù(°èÁÂÀÌÃ¼ È®ÀÎ Æ÷ÇÔ), ÀÜ¾× ¹Ý³³ Áõºù\n? 2026.9.22 °³Á¤ ³»ºÎ ÁöÄ§: ÁýÇàÀÜ¾× ¹Ý³³ °èÁÂ È®ÀÎ ÀýÂ÷°¡ Ãß°¡µÇ¾ú½À´Ï´Ù ? °³Á¤ Àü ¾È³»¹®À» »ç¿ëÇÏÁö ¾Êµµ·Ï ÁÖÀÇÇÏ¼¼¿ä.\n\n±âÇÑ °æ°ú ½Ã ´ÙÀ½ ¿¬µµ º¸Á¶»ç¾÷ ½ÅÃ» Á¦ÇÑ »çÀ¯°¡ µÉ ¼ö ÀÖÀ¸¹Ç·Î, ¹ÌÁ¦Ãâ »ç¾÷ÀÚ¿¡°Ô´Â ±âÇÑ 7ÀÏ Àü »çÀü ¾È³»¸¦ ±ÇÀåÇÕ´Ï´Ù.',
-    src:['Áö¹æº¸Á¶±Ý¹ý (ÇØ´ç Á¶Ç×)','±¤»ê±¸ Áö¹æº¸Á¶±Ý °ü¸® Á¶·Ê','³»ºÎ ÁöÄ§ °³Á¤(2026.9.22)']
+    q:'ì§€ë°©ë³´ì¡°ê¸ˆ ì •ì‚°ë³´ê³  ì œì¶œ ê¸°í•œì€?',
+    a:'ì§€ë°©ë³´ì¡°ì‚¬ì—… ì •ì‚°ë³´ê³  ê¸°í•œì€ ë‹¤ìŒê³¼ ê°™ìŠµë‹ˆë‹¤.\n\n? ë³´ì¡°ì‚¬ì—…ìžëŠ” ì‚¬ì—… ì™„ë£Œ í›„(ë˜ëŠ” íšŒê³„ì—°ë„ ì¢…ë£Œ í›„) ì •í•´ì§„ ê¸°í•œ ë‚´ ì •ì‚°ë³´ê³ ì„œë¥¼ ì œì¶œí•´ì•¼ í•˜ë©°, ê´€ë‚´ ìš´ì˜ ê¸°ì¤€ìƒ í†µìƒ 2ê°œì›” ì´ë‚´ìž…ë‹ˆë‹¤.\n? ì œì¶œ ì„œë¥˜: ì •ì‚°ë³´ê³ ì„œ, ì§‘í–‰ ë‚´ì—­ ì¦ë¹™(ê³„ì¢Œì´ì²´ í™•ì¸ í¬í•¨), ìž”ì•¡ ë°˜ë‚© ì¦ë¹™\n? 2026.9.22 ê°œì • ë‚´ë¶€ ì§€ì¹¨: ì§‘í–‰ìž”ì•¡ ë°˜ë‚© ê³„ì¢Œ í™•ì¸ ì ˆì°¨ê°€ ì¶”ê°€ë˜ì—ˆìŠµë‹ˆë‹¤ ? ê°œì • ì „ ì•ˆë‚´ë¬¸ì„ ì‚¬ìš©í•˜ì§€ ì•Šë„ë¡ ì£¼ì˜í•˜ì„¸ìš”.\n\nê¸°í•œ ê²½ê³¼ ì‹œ ë‹¤ìŒ ì—°ë„ ë³´ì¡°ì‚¬ì—… ì‹ ì²­ ì œí•œ ì‚¬ìœ ê°€ ë  ìˆ˜ ìžˆìœ¼ë¯€ë¡œ, ë¯¸ì œì¶œ ì‚¬ì—…ìžì—ê²ŒëŠ” ê¸°í•œ 7ì¼ ì „ ì‚¬ì „ ì•ˆë‚´ë¥¼ ê¶Œìž¥í•©ë‹ˆë‹¤.',
+    src:['ì§€ë°©ë³´ì¡°ê¸ˆë²• (í•´ë‹¹ ì¡°í•­)','ê´‘ì‚°êµ¬ ì§€ë°©ë³´ì¡°ê¸ˆ ê´€ë¦¬ ì¡°ë¡€','ë‚´ë¶€ ì§€ì¹¨ ê°œì •(2026.9.22)']
   },
   info:{
-    q:'Á¤º¸°ø°³Ã»±¸ ºÎºÐ°ø°³ °áÁ¤ ¿ä°ÇÀº?',
-    a:'ºÎºÐ°ø°³ °áÁ¤Àº ´ÙÀ½ ¿ä°ÇÀ» ÃæÁ·ÇÒ ¶§ °¡´ÉÇÕ´Ï´Ù.\n\n? °ø°³ Ã»±¸ ´ë»ó Á¤º¸¿¡ ºñ°ø°³ »çÀ¯¿¡ ÇØ´çÇÏ´Â ºÎºÐ°ú °ø°³ °¡´ÉÇÑ ºÎºÐÀÌ È¥ÀçµÇ¾î ÀÖ°í, µÎ ºÎºÐÀ» ºÐ¸®ÇÒ ¼ö ÀÖ´Â °æ¿ì ? ºñ°ø°³ ºÎºÐÀ» Á¦¿ÜÇÏ°í °ø°³ÇÕ´Ï´Ù.\n? °áÁ¤ ÅëÁö¿¡´Â ºñ°ø°³ ºÎºÐÀÇ ±Ù°Å Á¶Ç×°ú »çÀ¯¸¦ ±¸Ã¼ÀûÀ¸·Î ¸í½ÃÇØ¾ß ÇÏ¸ç, ºÒº¹ ÀýÂ÷(ÀÌÀÇ½ÅÃ»¡¤ÇàÁ¤½ÉÆÇ) ¾È³»¸¦ Æ÷ÇÔÇØ¾ß ÇÕ´Ï´Ù.\n? Ã³¸®±âÇÑ: Ã»±¸ÀÏºÎÅÍ 10ÀÏ ÀÌ³» °áÁ¤ (10ÀÏ ¿¬Àå °¡´É, ¿¬Àå ½Ã ÅëÁö)\n\nÁøÇà ÁßÀÎ 2026-184È£ °ÇÀº °³ÀÎÁ¤º¸ È¥Àç À¯ÇüÀ¸·Î, À¯»ç °áÁ¤·Ê 3°ÇÀÇ ¸¶½ºÅ· Ã³¸® ¹æ½ÄÀ» Âü°íÇÒ ¼ö ÀÖ½À´Ï´Ù.',
-    src:['Á¤º¸°ø°³¹ý (ÇØ´ç Á¶Ç×)','ºÎºÐ°ø°³ °áÁ¤·Ê 3°Ç','Ç¥ÁØ °áÁ¤ÅëÁö ¼­½Ä']
+    q:'ì •ë³´ê³µê°œì²­êµ¬ ë¶€ë¶„ê³µê°œ ê²°ì • ìš”ê±´ì€?',
+    a:'ë¶€ë¶„ê³µê°œ ê²°ì •ì€ ë‹¤ìŒ ìš”ê±´ì„ ì¶©ì¡±í•  ë•Œ ê°€ëŠ¥í•©ë‹ˆë‹¤.\n\n? ê³µê°œ ì²­êµ¬ ëŒ€ìƒ ì •ë³´ì— ë¹„ê³µê°œ ì‚¬ìœ ì— í•´ë‹¹í•˜ëŠ” ë¶€ë¶„ê³¼ ê³µê°œ ê°€ëŠ¥í•œ ë¶€ë¶„ì´ í˜¼ìž¬ë˜ì–´ ìžˆê³ , ë‘ ë¶€ë¶„ì„ ë¶„ë¦¬í•  ìˆ˜ ìžˆëŠ” ê²½ìš° ? ë¹„ê³µê°œ ë¶€ë¶„ì„ ì œì™¸í•˜ê³  ê³µê°œí•©ë‹ˆë‹¤.\n? ê²°ì • í†µì§€ì—ëŠ” ë¹„ê³µê°œ ë¶€ë¶„ì˜ ê·¼ê±° ì¡°í•­ê³¼ ì‚¬ìœ ë¥¼ êµ¬ì²´ì ìœ¼ë¡œ ëª…ì‹œí•´ì•¼ í•˜ë©°, ë¶ˆë³µ ì ˆì°¨(ì´ì˜ì‹ ì²­Â·í–‰ì •ì‹¬íŒ) ì•ˆë‚´ë¥¼ í¬í•¨í•´ì•¼ í•©ë‹ˆë‹¤.\n? ì²˜ë¦¬ê¸°í•œ: ì²­êµ¬ì¼ë¶€í„° 10ì¼ ì´ë‚´ ê²°ì • (10ì¼ ì—°ìž¥ ê°€ëŠ¥, ì—°ìž¥ ì‹œ í†µì§€)\n\nì§„í–‰ ì¤‘ì¸ 2026-184í˜¸ ê±´ì€ ê°œì¸ì •ë³´ í˜¼ìž¬ ìœ í˜•ìœ¼ë¡œ, ìœ ì‚¬ ê²°ì •ë¡€ 3ê±´ì˜ ë§ˆìŠ¤í‚¹ ì²˜ë¦¬ ë°©ì‹ì„ ì°¸ê³ í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.',
+    src:['ì •ë³´ê³µê°œë²• (í•´ë‹¹ ì¡°í•­)','ë¶€ë¶„ê³µê°œ ê²°ì •ë¡€ 3ê±´','í‘œì¤€ ê²°ì •í†µì§€ ì„œì‹']
   }
 };
 const qaOut=document.getElementById('qaOut'),qaQ=document.getElementById('qaQ'),
@@ -571,13 +571,13 @@ document.getElementById('qaChips').addEventListener('click',e=>{
 });
 document.getElementById('qaBtn').addEventListener('click',()=>{
   const v=qaInput.value;
-  if(/º¸Á¶±Ý|Á¤»ê/.test(v))runQA('subsidy');
-  else if(/Á¤º¸°ø°³|ºÎºÐ°ø°³/.test(v))runQA('info');
+  if(/ë³´ì¡°ê¸ˆ|ì •ì‚°/.test(v))runQA('subsidy');
+  else if(/ì •ë³´ê³µê°œ|ë¶€ë¶„ê³µê°œ/.test(v))runQA('info');
   else runQA('ad');
 });
 qaInput.addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('qaBtn').click()});
 
-/* ---------- ¹Î¿ø ´äº¯ Áö¿ø ---------- */
+/* ---------- ë¯¼ì› ë‹µë³€ ì§€ì› ---------- */
 document.getElementById('mwBtn').addEventListener('click',()=>{
   const sp=document.getElementById('mwSpin'),st=document.getElementById('mwStep'),ph=document.getElementById('mwPh');
   sp.classList.add('show');
@@ -589,7 +589,7 @@ document.getElementById('mwBtn').addEventListener('click',()=>{
   },1500);
 });
 
-/* ---------- °ø¹®¼­ ÃÊ¾È ---------- */
+/* ---------- ê³µë¬¸ì„œ ì´ˆì•ˆ ---------- */
 document.getElementById('docSeg').addEventListener('click',e=>{
   const b=e.target.closest('button');if(!b)return;
   document.querySelectorAll('#docSeg button').forEach(x=>x.setAttribute('aria-pressed','false'));
